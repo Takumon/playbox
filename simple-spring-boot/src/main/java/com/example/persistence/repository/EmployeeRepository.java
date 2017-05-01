@@ -1,9 +1,10 @@
 package com.example.persistence.repository;
 
-import com.example.persistence.entity.Employee;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.example.persistence.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 

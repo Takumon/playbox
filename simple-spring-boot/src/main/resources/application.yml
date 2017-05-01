@@ -1,0 +1,7 @@
+logging.level.org.hibernate:
+  SQ: debug
+  type.descriptor.sql.BasicBinder: trace
+
+spring:
+  jpa.hibernate.ddl-auto: none
+  h2.console.enabled: true
