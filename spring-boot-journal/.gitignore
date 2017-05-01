@@ -1,0 +1,14 @@
+# Eclipse
+.project
+.checkstyle
+.classpath
+.settings
+bin
+build
+
+# OS
+.DS_Store
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
