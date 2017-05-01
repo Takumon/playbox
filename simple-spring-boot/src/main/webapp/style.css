@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+th {
+    background-color: orange;
+}
+
+.error {
+    color: red;
+}
