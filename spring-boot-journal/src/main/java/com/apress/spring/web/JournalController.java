@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.apress.spring.domain.JournalEntry;
-import com.apress.spring.service.JournalService;
+import com.apress.spring.repository.JournalRepository;
 
-//@Controller
+@Controller
 public class JournalController {
+
 	@Autowired
-	JournalService journalService;
+	JournalRepository repo;
 
 	@RequestMapping(value = "/journal", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public @ResponseBody List<JournalEntry> getJournal() {
-		return journalService.findAll();
+		return (List<JournalEntry>) repo.findAll();
 	}
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("journal", journalService.findAll());
+		model.addAttribute("journal", repo.findAll());
 		return "index";
 	}
 }

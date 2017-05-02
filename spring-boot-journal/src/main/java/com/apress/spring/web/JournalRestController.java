@@ -19,7 +19,6 @@ import com.apress.spring.service.JournalService;
 @RestController
 public class JournalRestController {
 	
-	private static final String VIEW_INDEX = "index";
 
 	//@Autowired
 	private JournalService journalService;
@@ -49,7 +48,7 @@ public class JournalRestController {
 	
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView modelAndView) {
-		modelAndView.setViewName(VIEW_INDEX);
+		modelAndView.setViewName(VIEW.index.name());
 		modelAndView.addObject("journal", repo.findAll());
 		return modelAndView;
 	}
