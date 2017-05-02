@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
+import com.apress.spring.repository.JournalRepository;
 import com.apress.spring.service.JournalService;
 
 @SpringBootApplication(exclude = { ActiveMQAutoConfiguration.class })
@@ -20,10 +21,10 @@ public class SpringBootJournalApplication {
 	}
 
 	@Bean
-	CommandLineRunner start(JournalService service) {
+	CommandLineRunner start(JournalRepository repo) {
 		return args -> {
 			log.info("@@ findAll call");
-			service.findAll().forEach(entry -> log.info(entry.toString()));
+			repo.findAll().forEach(entry -> log.info(entry.toString()));
 		};
 	}
 }

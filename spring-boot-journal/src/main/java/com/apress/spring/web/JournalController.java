@@ -9,16 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.apress.spring.domain.Journal;
+import com.apress.spring.domain.JournalEntry;
 import com.apress.spring.service.JournalService;
 
-@Controller
+//@Controller
 public class JournalController {
 	@Autowired
 	JournalService journalService;
 
 	@RequestMapping(value = "/journal", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public @ResponseBody List<Journal> getJournal() {
+	public @ResponseBody List<JournalEntry> getJournal() {
 		return journalService.findAll();
 	}
 

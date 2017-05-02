@@ -4,12 +4,30 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.apress.spring.utils.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@Entity
+@Table(name = "entry")
 public class JournalEntry {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String title;
 	private Date created;
 	private String summary;
 
-	private final SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	@Transient
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 	public JournalEntry(String title, String summary, String date) throws ParseException {
 		this.title = title;
@@ -20,6 +38,14 @@ public class JournalEntry {
 	public JournalEntry() {
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -28,21 +54,13 @@ public class JournalEntry {
 		this.title = title;
 	}
 
+	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getCreated() {
 		return created;
 	}
 
-	public void setCreated(String date) throws ParseException {
-		Long _date = null;
-		try {
-			_date = Long.parseLong(date);
-			this.created = new Date(_date);
-			return;
-		} catch (Exception ex) {
-			// Do nothing;
-		}
-
-		this.created = format.parse(date);
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 
 	public String getSummary() {
@@ -53,16 +71,22 @@ public class JournalEntry {
 		this.summary = summary;
 	}
 
-	@Override
+	@JsonIgnore
+	public String getCreatedAsShort() {
+		return format.format(created);
+	}
+
 	public String toString() {
-		return new StringBuilder() //
-				.append("JournalEntry(") //
-				.append("Title:") //
-				.append(title) //
-				.append("Summary:") //
-				.append(summary) //
-				.append("Created:") //
-				.append(format.format(created)) //
-				.append(")").toString();
+		StringBuilder value = new StringBuilder("JournalEntry(");
+		value.append("Id: ");
+		value.append(id);
+		value.append(",Title: ");
+		value.append(title);
+		value.append(",Summary: ");
+		value.append(summary);
+		value.append(",Created: ");
+		value.append(format.format(created));
+		value.append(")");
+		return value.toString();
 	}
 }
