@@ -1,4 +1,4 @@
-package com.apress.spring.persistence.entity;
+package com.apress.spring.domain;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,21 +12,19 @@ import javax.persistence.Transient;
 
 @Entity
 public class Journal {
+	public Journal() {
+	}
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
+	private Integer id;
 	private String title;
-
 	private Date created;
-
 	private String summary;
 
 	@Transient
 	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-
-	public Journal() {
-	}
 
 	public Journal(String title, String summary, String date) throws ParseException {
 		this.title = title;
@@ -34,11 +32,11 @@ public class Journal {
 		this.created = format.parse(date);
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -50,8 +48,8 @@ public class Journal {
 		this.title = title;
 	}
 
-	public String getCreatedAsShort() {
-		return format.format(created);
+	public Date getCreated() {
+		return created;
 	}
 
 	public void setCreated(Date created) {
@@ -66,18 +64,21 @@ public class Journal {
 		this.summary = summary;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("JournalEntry(");
-		builder.append(", Title=");
-		builder.append(title);
-		builder.append(", Summary=");
-		builder.append(summary);
-		builder.append(", Created=");
-		builder.append(format.format(created));
-		builder.append(")");
-		return builder.toString();
+	public String getCreatedAsShort() {
+		return format.format(created);
 	}
 
+	public String toString() {
+		StringBuilder value = new StringBuilder("JournalEntry(");
+		value.append("Id: ");
+		value.append(id);
+		value.append(",Title: ");
+		value.append(title);
+		value.append(",Summary: ");
+		value.append(summary);
+		value.append(",Created: ");
+		value.append(getCreatedAsShort());
+		value.append(")");
+		return value.toString();
+	}
 }
