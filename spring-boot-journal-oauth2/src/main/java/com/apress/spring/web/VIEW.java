@@ -6,6 +6,5 @@ package com.apress.spring.web;
  * @author inouetakumon
  */
 public enum VIEW {
-	index, //
-	login
+	index
 }

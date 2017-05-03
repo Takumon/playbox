@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfigura
 import org.springframework.context.annotation.Bean;
 
 import com.apress.spring.repository.JournalRepository;
-import com.apress.spring.service.JournalService;
 
 @SpringBootApplication(exclude = { ActiveMQAutoConfiguration.class })
 public class SpringBootJournalApplication {
