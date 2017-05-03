@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
+    compile group: 'com.rabbitmq', name: 'amqp-client', version: '4.1.0'
+}
