@@ -1,21 +1,25 @@
-package com.apress.websockets.websocket;
+package com.apress.websockets.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
-public class Producer {
+@RestController
+public class WebSocketController {
 
 	private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
 	@Autowired
 	private SimpMessagingTemplate template;
 
-	public void sendMessageTo(String topic, String message) {
+	@RequestMapping("/send/{topic}")
+	public String sender(@PathVariable String topic, @RequestParam String message) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[") //
 				.append(dateFormatter.format(new Date())) //
@@ -23,6 +27,7 @@ public class Producer {
 				.append(message);
 
 		this.template.convertAndSend("/topic/" + topic, builder.toString());
+		return "OK-Sent";
 	}
 
 }

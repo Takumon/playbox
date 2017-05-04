@@ -12,21 +12,111 @@
 </head>
 <body>
 <div>
-	<h3>Messages:</h3>
-	<ol id="messages"></ol>
+	<button id="connect">接続</button>
+	<button id="disconnect" disabled="disabled">接続を切る</button>
 </div>
-<script type="text/javascript">
+<div>
+	<input type="text" id="message" placeholder="メッセージ" />
+	<button id="send" disabled="disabled">Send</button>
+	<div id="messages" ></div>
+</div>
+<script>
 $(function() {
-	var messageList = $("#messages");
-	var socket = new SockJS('/stomp');
-	var stompClient = Stomp.over(socket);
+	/**
+	 * WebSocketでメッセージをやり取りするためのクラス
+	 *
+	 */
+	var ChatContext = function() {
+		
+		// domの保持
+		this.$connectButton = $('#connect');
+		this.$disconnectButton = $('#disconnect');
+		this.$sendButton = $('#send');
+		this.$messages = $("#messages");
+		this.$sendMessage = $("#message");
+		
+		// イベント登録
+		this.$connectButton.on('click', this.connect.bind(this));
+		this.$disconnectButton.on('click', this.disconnect.bind(this));
+		this.$sendButton.on('click', this.sendMessage.bind(this));
+	};
 	
-	stompClient.connect({}, function(frame) {
-		stompClient.subscribe("/topic/message", function(data) {
-			var message = data.body;
-			messageList.append("<li>" + message + "</li>");
-		});
-	});
+	/**
+	 * HelloStompの関数定義
+	 */
+	ChatContext.prototype = {
+			
+		/**
+		 * 接続処理
+		 *
+		 */
+		connect: function() {
+			// メッセージエリアの初期化
+			this.$messages.html("");
+			
+			// WebSocketを使ったStompクライアントの生成
+			var socket = new SockJS('/stomp');
+			this.stompClient = Stomp.over(socket);
+			
+			// エンドポイントに接続
+			// 第二引数に接続完了後のコールバック関数を渡す
+			this.stompClient.connect({}, this.onConnected.bind(this));
+		},
+		
+		/**
+		 * エンドポイントへ接続した時の処理
+		 *
+		 * @param frame
+		 */
+		onConnected: function(frame) {
+			console.log('接続完了: ' + frame);
+			this.stompClient.subscribe('/topic/message', this.onSubscribeGreeting.bind(this));
+			this.setConnected(true);
+		},
+		
+		/**
+		 * 挨拶メッセージ(/topic/greeting)を受信した時の処理
+		 *
+		 * @param message 受信メッセージの情報
+		 */
+		onSubscribeGreeting: function(message) {
+			// pタグを新規作成
+			var $newMessage = $('<p></p>').text(message.body);
+			// メッセージエリアの最上部に挿入
+			$newMessage.prependTo(this.$messages);
+		},
+		
+		/**
+		 * メッセージ(api/greet)の送信処理
+		 */
+		sendMessage: function() {
+			this.stompClient.send('/topic/message', {}, this.$sendMessage.val());
+		},
+		
+		/**
+		 * 接続切断処理
+		 */
+		disconnect: function() {
+			if(this.stompClient) {
+				this.stompClient.disconnect();
+				this.stompClient = null;
+			}
+			this.setConnected(false);
+		},
+		
+		
+		/**
+		 * ボタン表示の切り替え
+		 */
+		setConnected: function(connected) {
+			this.$connectButton.prop("disabled", connected)
+			this.$disconnectButton.prop("disabled", !connected);
+			this.$sendButton.prop("disabled", !connected);
+		}
+	};
+	
+	
+	new ChatContext();
 });
 </script>
 </body>
