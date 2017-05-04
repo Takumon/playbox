@@ -1,0 +1,8 @@
+myqueue: spring-boot
+# spring:
+#   rabbitmq:
+#    host: mydomain.com
+#    username: rabbituser
+#    password: thisissecured
+#    port: 5672
+#    virtual-host: /production
