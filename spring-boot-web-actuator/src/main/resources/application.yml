@@ -1,0 +1,22 @@
+management.security.enabled: false
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: true
+logging:
+  file: my.log
+endpoints:
+  shutdown:
+    enabled: true
+  beans:
+    id: spring
+management:
+  context-path: /monitor
+  security:
+    enabled: false
+  port: 8081
+  address: 127.0.0.1
+  
