@@ -2,17 +2,14 @@ package com.apress.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-
-import com.apress.spring.repository.JournalRepository;
-import com.apress.spring.service.JournalService;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication(exclude = { ActiveMQAutoConfiguration.class })
-public class SpringBootJournalApplication {
+public class SpringBootJournalApplication extends SpringBootServletInitializer {
 
 	private Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
 
@@ -20,11 +17,9 @@ public class SpringBootJournalApplication {
 		SpringApplication.run(SpringBootJournalApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner start(JournalRepository repo) {
-		return args -> {
-			log.info("@@ findAll call");
-			repo.findAll().forEach(entry -> log.info(entry.toString()));
-		};
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(SpringBootJournalApplication.class);
 	}
+
 }

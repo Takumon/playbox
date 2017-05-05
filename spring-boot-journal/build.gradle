@@ -21,36 +21,37 @@ repositories {
 	mavenCentral()
 }
 
-
-bootRun {
-    // コマンドラインからmainメソッドに引数を渡す
-    // gradle bootRun -Dargs="arg1 arg2 arg3"のようにスペース区切りで渡す 
-    if ( project.hasProperty('args') ) {
-        args project.args.split('\\s+')
-    }
-}
-
 dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-actuator-docs')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.data:spring-data-rest-hal-browser')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.security:spring-security-taglibs')
 	compile('org.thymeleaf:thymeleaf-spring4')
+	compile('org.springframework.hateoas:spring-hateoas')
 	
 	
-	
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-configuration-processor')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	
 	compile('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('com.jayway.jsonpath:json-path')
-	
-	
-	
-	
+}
+
+
+bootRun {
+    executable = true
+    // コマンドラインからmainメソッドに引数を渡す
+    // gradle bootRun -Dargs="arg1 arg2 arg3"のようにスペース区切りで渡す 
+    if ( project.hasProperty('args') ) {
+        args project.args.split('\\s+')
+    }
 }

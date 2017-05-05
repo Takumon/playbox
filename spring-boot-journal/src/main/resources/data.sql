@@ -1,7 +1,3 @@
--- SECURITY:USER_ACCOUNT
-INSERT INTO ACCOUNT(account_name,password) VALUES('springboot', 'isawesome');
-INSERT INTO ACCOUNT(account_name,password) VALUES('springsecurity', 'isawesome');
-
 -- JOURNAL TABLE:ENTITY
 INSERT INTO ENTRY(title,summary,created) values('Get to know Spring Boot', 'Today I will learn Spring Boot', '2016-01-01 00:00:00.00');
 INSERT INTO ENTRY(title,summary,created) values('Simple Spring Boot Project', 'I will do my first Spring Boot Project', '2016-01-02 00:00:00.00');

@@ -5,16 +5,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 
-// JdbcSecurityConfigurationの方を使用する
-//@Configuration
-//@EnableGlobalAuthentication
+@Configuration
+@EnableGlobalAuthentication
 public class InMemorySecurityConfiguration {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication() //
-				.withUser("user") //
-				.password("password") //
+				.withUser("spring") //
+				.password("boot") //
 				.roles("USER") //
 				.and() //
 				.withUser("admin") //

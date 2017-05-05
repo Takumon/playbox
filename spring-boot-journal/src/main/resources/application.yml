@@ -1,24 +1,68 @@
+# デフォルト設定
 spring:
+  profiles:
+    active:
+    - dev
   main:
-    banner-mode: 'console'
+    banner-mode: log
   datasource:
-    url: jdbc:mysql://localhost:3306/journal
-    username: springboot
-    password: springboot
     dbcp2:
       test-while-idle: true
       validation-query: SELECT 1
   jpa:
     show-sql: true
-    hibernate.ddl-auto: none
-    hibernate:
+    hibernate: 
+      ddl-auto: update
       naming:
         strategy: org.hibernamte.cfg.ImprovedNamingStrategry
-    properties:
-      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   data:
     rest:
       base-path: /api
-
-      
-  
+management:
+  context-path: /monitor
+  security:
+    roles:
+    - ADMIN
+    - USER
+endpoints:
+  shutdown:
+    enabled: true
+---
+# 開発環境
+spring:
+  profiles: dev
+  thymeleaf:
+    cache: false
+  main:
+    banner-mode: console
+  datasource:
+    url: jdbc:mysql://localhost:3306/journal
+    username: springboot
+    password: springboot
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.jks
+    key-store-password: tomcat
+    key-password: tomcat
+---
+ # コンテナ環境の設定
+ spring:
+  profiles: container
+  thymeleaf:
+    cache: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/calender
+    username: springboot
+    password: springboot
+  data:
+    rest:
+      base-path: /rest
+ management:
+  context-path: /insight
+  security:
+    roles:
+    - ADMIN
