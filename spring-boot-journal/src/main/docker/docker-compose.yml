@@ -1,0 +1,4 @@
+spring-boot-journal:
+  image: spring-boot-journal:0.0.1-SNAPSHOT
+  ports:
+  - "8443:8443"
