@@ -1,0 +1,16 @@
+{
+  "name": "asciidoctor-pdf-live-reload-seed",
+  "version": "0.1.0",
+  "description": "Example project of asciidoctor + asciidoctor-pdf + asciidoctor-pdf-cjk + browser-sync + gulp",
+  "main": "generator.sh",
+  "author": "panghea.develop@gmail.com",
+  "license": "MIT",
+  "repository": "https://github.com/panghea/asciidoctor-pdf-live-reload-seed",
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-run": "^1.6.10",
+    "gulp-shell": "^0.4.2"
+  }
+}

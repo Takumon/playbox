@@ -1,0 +1,75 @@
+:lang:        ja
+:icons:       font
+:docinfo:
+:toc-title: 目次
+:toc: left
+:sectnums:
+
+= AsciidoctorSample
+windows と mac どちらにも対応
+
+== 前提条件
+事前にインストールしておくもの
+
+* Gitクライアント
+* http://bundler.io/[Bundler]
+* https://nodejs.org/ja/[Node.js]
+
+== インストール方法
+* https://github.com/panghea/asciidoctor-pdf-live-reload-seed[panghea/asciidoctor-pdf-live-reload-seed]をクローンする。
+[source, bash]
+----
+$ git clone https://github.com/panghea/asciidoctor-pdf-live-reload-seed.git
+----
+
+* プロジェクト配下に移動して依存ライブラリをインストールする。
+[source, bash]
+----
+$ git clone https://github.com/panghea/asciidoctor-pdf-live-reload-seed.git
+$ cd asciidoctor-pdf-live-reload-seed
+$ bundler install
+$ npm install -g gulp
+$ npm install
+----
+
+== 使用方法
+=== README.adocをHTMLとPDFに変換する
+[.lead]
+プロジェクト直下で下記を実行する。
+
+[source, bash]
+----
+./generate.sh README.adoc
+----
+
+または
+
+[source, powershell]
+----
+./generate.ps1 README.adoc
+----
+
+=== ライブリロード
+adocファイルを修正したらリアルタイムにHTMLを出力し、
+ブラウザに修正が反映されるようにする。
+
+==== 事前条件
+下記プラグインをブラウザに入れておく。
+
+* https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=ja[LiveReload]
+
+==== 手順
+[.lead]
+* プロジェクト直下で下記を実行する。
+
+[source, bash]
+----
+gulp
+----
+
+* ブラウザで http://localhost:3000/README.html を開く。
+
+* この状態でREADME.adocを編集するとブラウザにリアルタイムに反映される。
+
+
+NOTE: 詳細な使用方法は http://price-checker.jp/asciidoctor-pdf/[エクセルやパワーポイントのドキュメントを捨てて、超美麗なドキュメント作成をasciidoctorで実現しよう！]を参照。
