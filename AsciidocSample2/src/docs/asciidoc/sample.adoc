@@ -1,0 +1,89 @@
+:lang:        ja
+:icons:       font
+:docinfo:
+:toc-title: 目次
+:toc: left
+:sectnums:
+
+= 文法を覚えよう
+とにかく書く！覚える！！
+
+== セッションタイトル レベル２
+=== セッションタイトル レベル3
+==== セッションタイトル レベル4
+===== セッションタイトル レベル5
+====== セッションタイトル レベル6
+
+レベル７はないらしいい
+======= セッションタイトル レベル7
+
+*太字*
+**ふ**とじ
+_イタリック_
+__イタ__リック
+`これなんだ`
+どうした``これ``なんだ
+http://asciidoc.org[AsciiDoc]
+link:../structure[directry structure]
+link:
+{ctx_path}../pdf/sample.pdf[get the PDF]
+
+<<属性のカタログ>>
+
+これは　image:logo.jpeg[ロゴ, 100, 200ロゴ, 100, 200]　画像
+
+これは
+
+image::logo.jpeg[Logo]
+
+画像です
+
+
+[quote]
+____
+これは引用文だよ。
+結講書きやすい
+____
+
+[source,java]
+.Person.java
+----
+/**
+ * 人を表すBean
+ *
+ * @auther Takumon
+ */
+public class Person {
+  /** ID */
+  private String id;
+
+  /** 名前 */
+  private String name;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+}
+----
+
+include::part1.adoc[]
+
+
+
+水平線
+
+'''
+
+水平線
