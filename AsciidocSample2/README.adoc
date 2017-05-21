@@ -1,0 +1,128 @@
+:lang:        ja
+:icons:       font
+:docinfo:
+:toc-title: 目次
+:toc: left
+:sectnums:
+
+= AsciidoctorTemplate
+Asciidoctorを作成する上で、Windows環境でも簡単にライブリロードできるテンプレート。
+
+== 前提条件
+事前にインストールしておくもの
+
+* Chromeの https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=ja[LiveReload]
+* Gitクライアント
+* Java
+* Graphviz
+
+※ プロジェクトで https://github.com/asciidoctor/asciidoctor-gradle-plugin[asciidoctor/asciidoctor-gradle-plugin]を使用しており内部でJRubyを使っているので、Rubyのインストールは不要。
+
+=== Grapvizのインストール
+* Macの場合はbrewでインストール
+[source, bash]
+----
+$ brew install graphviz
+----
+
+* dotコマンドが使えるようになって入ればOK
+[source, bash]
+----
+$ dot -v
+dot - graphviz version 2.40.1 (20161225.0304)
+----
+
+
+
+== インストール方法
+* https://github.com/Takumon/AsciidocTemplate.git[Takumon/AsciidocTemplate]をクローンする。
+[source, bash]
+----
+$ git clone https://github.com/Takumon/AsciidocTemplate.git
+----
+
+== 使用方法
+=== 通常の場合
+[.lead]
+プロジェクト直下で下記を実行すると``build/docs/asciidoc``フォルダ配下にHTMLとPDFが生成される。
+
+[source, bash]
+----
+$ cd AsciidocTemplate
+$ ./gradlew asciidoctor
+----
+
+
+=== ライブリロードを使う場合
+adocファイルを修正したらリアルタイムにHTMLを出力し、
+ブラウザに修正が反映されるようにする。
+
+==== 手順
+[.lead]
+* プロジェクト直下で下記を実行する。
+
+[source, bash]
+----
+$ cd AsciidocTemplate
+$ ./gradlew -t asciidoctor
+----
+
+* もう一つ別のターミナルを起動し、プロジェクト直下で下記を実行する。
+
+[source, bash]
+----
+$ cd AsciidocTemplate
+$ ./gradlew liveReload
+----
+
+* Chromeで http://localhost:35729/html5/sample.html を開く。
+
+* ChromeのLiveReload機能をONにする（右上にあるLiveReloadアイコンをクリックする）
+
+* この状態でadocファイルを編集するとブラウザにリアルタイムに反映される。
+
+<<<
+
+== PlantUMLによるクラス図の例
+UMLはPlantUMLで記述できる。日本語（UTF-8）でも記述可能。
+
+.クラス図
+[plantuml, classediagram, png]
+....
+class "クラスA" {
+  +メソッド1()
+}
+class "クラスB" {
+  +メソッド2()
+}
+class "クラスC" {
+}
+"クラスA" -- "クラスB"
+"クラスA" <|-- "クラスC"
+....
+
+== Ditaaによる図の例
+箱と線で表現するものはDitaaで記述可能。日本語（UTF-8）は文字化けする
+
+.a = 1 + 3の構文木
+[ditaa, syntaxtree]
+....
+    /--------\
+    |cmpExpr |
+    |text:'='|
+    \--------/
+       |   |
+  /----/   \-----\
+  |              |
+/--------\   /--------\
+|variable|   |addExpr |
+|text:'a'|   |text:'+'|
+\--------/   \--------/
+               |   |
+           /---/   \---\
+           |           |
+     /----------\  /----------\
+     |literal   |  |literal   |
+     |text:'1'  |  |text:'3'  |
+     \----------/  \----------/
+....
