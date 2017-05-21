@@ -1,0 +1,18 @@
+// tag::通常[]
+= ドキュメントのリファレンス
+開発者向け
+
+プロジェクトXのドキュメントです。
+
+\include::basics.adoc[]
+
+\include::installation.adoc[]
+
+\include::example.adoc[]
+// end::通常[]
+
+
+
+// tag::URI[]
+\include::https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/README.adoc[]
+// end::URI[]

@@ -4,86 +4,381 @@
 :toc-title: 目次
 :toc: left
 :sectnums:
-
-= 文法を覚えよう
-とにかく書く！覚える！！
-
-== セッションタイトル レベル２
-=== セッションタイトル レベル3
-==== セッションタイトル レベル4
-===== セッションタイトル レベル5
-====== セッションタイトル レベル6
-
-レベル７はないらしいい
-======= セッションタイトル レベル7
-
-*太字*
-**ふ**とじ
-_イタリック_
-__イタ__リック
-`これなんだ`
-どうした``これ``なんだ
-http://asciidoc.org[AsciiDoc]
-link:../structure[directry structure]
-link:
-{ctx_path}../pdf/sample.pdf[get the PDF]
-
-<<属性のカタログ>>
-
-これは　image:logo.jpeg[ロゴ, 100, 200ロゴ, 100, 200]　画像
-
-これは
-
-image::logo.jpeg[Logo]
-
-画像です
+:sectanchors:
+:description: Asciidotの文法のクイックリファレンスです。
+:imagedir: images
+:includedir: _includes
 
 
-[quote]
-____
-これは引用文だよ。
-結講書きやすい
-____
+= Asciidoctor文法
 
-[source,java]
-.Person.java
+
+== パラグラフ
+
+.通常
 ----
-/**
- * 人を表すBean
- *
- * @auther Takumon
- */
-public class Person {
-  /** ID */
-  private String id;
-
-  /** 名前 */
-  private String name;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-}
+include::{includedir}/ex-text.adoc[tags=通常のパラグラフ]
 ----
 
-include::part1.adoc[]
+[.result]
+====
+include::{includedir}/ex-text.adoc[tags=通常のパラグラフ]
+====
+
+
+.改行
+----
+include::{includedir}/ex-text.adoc[tags=改行]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tags=改行]
+====
 
 
 
-水平線
+.リテラル
+----
+include::{includedir}/ex-text.adoc[tags=リテラル]
+----
 
-'''
+[.result]
+====
+include::{includedir}/ex-text.adoc[tags=リテラル]
+====
 
-水平線
+.脚注
+----
+include::{includedir}/ex-text.adoc[tags=脚注]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=脚注]
+====
+
+NOTE: <<脚注ブロック,脚注ブロック>>のような書き方も可能です。
+
+
+.リード
+----
+include::{includedir}/ex-text.adoc[tag=リード]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=リード]
+====
+
+NOTE: Asciidoctorのデフォルトスタイルシートの場合、序文の最初のパラグラフにリードパラグラフのスタイルが自動で適用されます。
+
+.パラグラフ、リテラル、脚注ブロックの詳しい例は
+****
+Asciidoctor User Manual の下記セクションを参考にしてください。
+
+* http://asciidoctor.org/docs/user-manual/#paragraph[Paragraphs]
+* http://asciidoctor.org/docs/user-manual/#literal-text-and-blocks[Literal Text and Blocks]
+* http://asciidoctor.org/docs/user-manual/#admonition[Admonitions]
+
+****
+
+
+== テキストフォーマット
+.太字、イタリック、モノスペース
+----
+include::{includedir}/ex-text.adoc[tag=太字-イタリック-モノスペース]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=太字-イタリック-モノスペース]
+====
+
+.マーク、カスタムスタイル
+----
+include::{includedir}/ex-text.adoc[tag=マーク-カスタムスタイル]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=マーク-カスタムスタイル]
+====
+
+.スーパースクリプト、サブスクリプト
+----
+include::{includedir}/ex-text.adoc[tag=スーパースクリプト-サブスクリプト]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=スーパースクリプト-サブスクリプト]
+====
+
+
+.カーブクォート、アポストロフィ
+----
+include::{includedir}/ex-text.adoc[tag=カーブクォート-アポストロフィ]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tag=カーブクォート-アポストロフィ]
+====
+
+NOTE: アポストロフィは日本語では使用しないので英語のままにしています。
+
+
+.テキストフォーマットの例は
+****
+Asciidoctor User Manual の下記セクションを参考にしてください。
+
+* http://asciidoctor.org/docs/user-manual/#bold-and-italic[Bold and Italic Formatting]
+* http://asciidoctor.org/docs/user-manual/#curved[Quotation Marks and Apostrophes]
+* http://asciidoctor.org/docs/user-manual/#subscript-and-superscript[Subscript and Superscript]
+* http://asciidoctor.org/docs/user-manual/#mono[Monospace Formatting]
+* http://asciidoctor.org/docs/user-manual/#custom-styling-with-attributes[Custom Styling with Attributes]
+* http://asciidoctor.org/docs/user-manual/#pass-mac[Passthrough Macros]
+
+****
+
+== ドキュメントヘッダー
+IMPORTANT: ヘッダーはオプションです。
+
+CAUTION: ヘッダーは空行であることは許容されません。またコンテンツと最低一行以上は間隔を開ける必要があります。
+
+
+.タイトルのみ
+----
+include::{includedir}/ex-header-title.adoc[tag=通常]
+----
+
+.タイトルと著者
+----
+include::{includedir}/ex-author.adoc[tag=通常]
+----
+
+NOTE: 著者が複数人の場合はセミコロンで区切って記載してください。
+
+.タイトルと著者とリビジョン
+----
+include::{includedir}/ex-rev.adoc[tag=通常]
+----
+
+IMPORTANT: 著者を定義していないとリビジョンを定義することはできません。
+
+.タイトルと属性
+----
+include::{includedir}/ex-header-attr.adoc[tag=通常]
+----
+
+[[セクションタイトル]]
+== セクションタイトル
+
+.記事形式
+----
+include::{includedir}/ex-section.adoc[tag=記事形式]
+----
+
+[.result]
+====
+include::{includedir}/ex-section.adoc[tag=記事形式]
+====
+
+WARNING: 記事形式（デフォルト）を使用する場合、レベル0のタイトル(ドキュメントのタイトルなど)は１つしか定義できません。
+また必ずドキュメントヘッダーに定義してください。
+
+NOTE: ``=``の数がHTMLのヘッダーレベルと一致しています。例えば__レベル１のセクションのタイトル__は``<h2>``に変換されます。
+
+.本形式
+----
+include::{includedir}/ex-section.adoc[tag=本形式]
+----
+
+[.result]
+====
+include::{includedir}/ex-section.adoc[tag=本形式]
+====
+
+.idを指定
+----
+[[primitives-nulls]]
+== プリミティブ型とnull
+----
+
+.セクションアンカーとリンク
+
+
+`sectanchors`::
+このドキュメント属性が設定されている場合、セクションアイコンアンカーが表示されます。
+
+
+`sectlinks`::
+このドキュメント属性が設定されている場合、セクションタイトルが自分自身へのリンクになります。
+これによりユーザはセクションをブックマークすることができます。
+
+
+NOTE: セクションタイトルアンカーは、プロパティをレンダリングするデフォルトのAsciidoctorのスタイルに依存します。
+
+
+== 別ファイルのインクルード
+
+.ドキュメントをインクルード
+----
+include::{includedir}/ex-include.adoc[tag=通常]
+----
+
+CAUTION: Asciidoctorはコンテントを隔てるために、隣接したincludeステートメントの間に空行を挿入するようなことはしません。
+空行を勝手に挿入すると、セクションタイトルを無効にしてしまうような思わぬ結果を招いてしまうからです。
+
+
+.URIによるコンテンツのインクルード
+----
+include::{includedir}/ex-include.adoc[tags=URI]
+----
+
+NOTE: URIによるコンテンツのインクルードは危険があります。
+セーフモードがSECUREかそれ以上の場合は無効になるからです。
+たとえセーフモードがSECIREよりも低いとしても、
+allow-uri-read AsciidoctorがURIからコンテンツを読み込むために``allow-uri-read``属性を設定する必要があります。
+
+
+== 水平罫線と改ページ
+.水平罫線
+----
+include::{includedir}/ex-hr.adoc[tag=水平罫線]
+----
+
+.改ページ
+----
+include::{includedir}/ex-hr.adoc[tag=改ページ]
+----
+
+= リスト
+.順序無しリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=順序無しリスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-u-list.adoc[tag=順序無しリスト]
+====
+
+NOTE: リストの前後には空白行が必須です。
+
+TIP: 行コメントで二つのリストを分割できます。
+コメント中の(`+^+`)はオプションですが、この行がリストの終わりということを意味するマーカです。
+
+.ネストした順序無しリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=ネストした順序無しリスト]
+----
+
+NOTE: 順序無しリストのマーカはlink:http://asciidoctor.org/docs/user-manual/#custom-markers[blocks style]で変更可能です。
+
+.チェックリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=チェックリスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-u-list.adoc[tag=チェックリスト]
+====
+
+TIP: チェックリストはlink:http://asciidoctor.org/docs/user-manual/#checklist[font-based icons and be interactive]を使うこともできます。
+
+.順序有りリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=順序有りリスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-u-list.adoc[tag=順序有りリスト]
+====
+
+
+.ネストした順序有りリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=ネストした順序有りリスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-u-list.adoc[tag=ネストした順序有りリスト]
+====
+
+
+.最もネストした順序有りリスト
+----
+include::{includedir}/ex-u-list.adoc[tag=最もネストした順序有りリスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-u-list.adoc[tag=最もネストした順序有りリスト]
+====
+
+
+TIP: 順序有りリスト用にAsciidoctorはlink:http://asciidoctor.org/docs/user-manual/#numbering-styles[numeration styles]をサポートしています。
+``lowergreek``や``decimal-leading-zero``などが用意されています。
+
+
+
+.ラベル(単一行)
+----
+include::{includedir}/ex-dlist.adoc[tag=ラベル(単一行)]
+----
+
+[.result]
+====
+include::{includedir}/ex-dlist.adoc[tag=ラベル(単一行)]
+====
+
+
+
+.ラベル(複数行)
+----
+include::{includedir}/ex-dlist.adoc[tag=ラベル(複数行)]
+----
+
+[.result]
+====
+include::{includedir}/ex-dlist.adoc[tag=ラベル(複数行)]
+====
+
+
+.Q&A
+----
+include::{includedir}/ex-dlist.adoc[tag=Q&A]
+----
+
+[.result]
+====
+include::{includedir}/ex-dlist.adoc[tag=Q&A]
+====
+
+.リストとラベルの組み合わせ
+----
+include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
+----
+
+[.result]
+====
+include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
+====
+
+TIP: レベルはネスト可能です。行の冒頭のスペースは重要では有りません(あってもなくてもいいです)。
+
+
+.アウトライン中の複雑なコンテンツ
+----
+include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコンテンツ]
+----
+
+[.result]
+====
+include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコンテンツ]
+====

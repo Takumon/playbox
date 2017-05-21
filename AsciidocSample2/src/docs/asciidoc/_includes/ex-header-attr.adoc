@@ -1,0 +1,10 @@
+// tag::通常[]
+= 本ドキュメントのタイトル
+著者名 <doc.writer@asciidoctor.org>
+v1.0, 2014-01-01
+:toc:
+:imagesdir: assets/images
+:homepage: http://asciidoctor.org
+
+本ドキュメントは...
+// end::通常[]
