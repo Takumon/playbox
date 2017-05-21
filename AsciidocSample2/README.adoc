@@ -6,6 +6,8 @@
 :sectnums:
 
 = AsciidoctorSample2
+
+== アプリ概要
 Asciidoctorのlink:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[クイック文法リファレンス]を日本語で作成してみたもの。
 
 == 前提条件
