@@ -5,8 +5,8 @@
 :toc: left
 :sectnums:
 
-= AsciidoctorTemplate
-Asciidoctorを作成する上で、Windows環境でも簡単にライブリロードできるテンプレート。
+= AsciidoctorSample2
+Asciidoctorのlink:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[クイック文法リファレンス]を日本語で作成してみたもの。
 
 == 前提条件
 事前にインストールしておくもの
@@ -19,20 +19,14 @@ Asciidoctorを作成する上で、Windows環境でも簡単にライブリロ�
 ※ プロジェクトで https://github.com/asciidoctor/asciidoctor-gradle-plugin[asciidoctor/asciidoctor-gradle-plugin]を使用しており内部でJRubyを使っているので、Rubyのインストールは不要。
 
 === Grapvizのインストール
-* Macの場合はbrewでインストール
-[source, bash]
-----
-$ brew install graphviz
-----
-
+* link:http://www.graphviz.org/Download_windows.php[公式サイト]でmsiファイルをダウンロード。
+* msiファイルをクリックしてウィザードに従ってインストールする。
 * dotコマンドが使えるようになって入ればOK
 [source, bash]
 ----
 $ dot -v
 dot - graphviz version 2.40.1 (20161225.0304)
 ----
-
-
 
 == インストール方法
 * https://github.com/Takumon/AsciidocTemplate.git[Takumon/AsciidocTemplate]をクローンする。
@@ -44,7 +38,7 @@ $ git clone https://github.com/Takumon/AsciidocTemplate.git
 == 使用方法
 === 通常の場合
 [.lead]
-プロジェクト直下で下記を実行すると``build/docs/asciidoc``フォルダ配下にHTMLとPDFが生成される。
+プロジェクト直下で下記を実行するとdocsフォルダ配下にHTMLとPDFが生成される。
 
 [source, bash]
 ----
@@ -80,49 +74,3 @@ $ ./gradlew liveReload
 * ChromeのLiveReload機能をONにする（右上にあるLiveReloadアイコンをクリックする）
 
 * この状態でadocファイルを編集するとブラウザにリアルタイムに反映される。
-
-<<<
-
-== PlantUMLによるクラス図の例
-UMLはPlantUMLで記述できる。日本語（UTF-8）でも記述可能。
-
-.クラス図
-[plantuml, classediagram, png]
-....
-class "クラスA" {
-  +メソッド1()
-}
-class "クラスB" {
-  +メソッド2()
-}
-class "クラスC" {
-}
-"クラスA" -- "クラスB"
-"クラスA" <|-- "クラスC"
-....
-
-== Ditaaによる図の例
-箱と線で表現するものはDitaaで記述可能。日本語（UTF-8）は文字化けする
-
-.a = 1 + 3の構文木
-[ditaa, syntaxtree]
-....
-    /--------\
-    |cmpExpr |
-    |text:'='|
-    \--------/
-       |   |
-  /----/   \-----\
-  |              |
-/--------\   /--------\
-|variable|   |addExpr |
-|text:'a'|   |text:'+'|
-\--------/   \--------/
-               |   |
-           /---/   \---\
-           |           |
-     /----------\  /----------\
-     |literal   |  |literal   |
-     |text:'1'  |  |text:'3'  |
-     \----------/  \----------/
-....
