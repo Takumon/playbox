@@ -11,7 +11,7 @@
 
 
 = Asciidoctor文法
-
+:linkattrs:
 
 == パラグラフ
 
@@ -254,7 +254,7 @@ include::{includedir}/ex-hr.adoc[tag=水平罫線]
 include::{includedir}/ex-hr.adoc[tag=改ページ]
 ----
 
-= リスト
+== リスト
 .順序無しリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=順序無しリスト]
@@ -370,7 +370,7 @@ include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
 include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
 ====
 
-TIP: レベルはネスト可能です。行の冒頭のスペースは重要では有りません(あってもなくてもいいです)。
+TIP: ラベルはネスト可能です。行の冒頭のスペースは重要ではありません(あってもなくてもいいです)。
 
 
 .アウトライン中の複雑なコンテンツ
@@ -382,3 +382,100 @@ include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコン�
 ====
 include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコンテンツ]
 ====
+
+== リンク
+.通常のリンク
+----
+include::{includedir}/ex-url.adoc[tag=通常のリンク]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=通常のリンク]
+====
+
+.スペースと特殊文字を含んだリンク
+----
+include::{includedir}/ex-url.adoc[tag=スペースと特殊文字を含んだリンク]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=スペースと特殊文字を含んだリンク]
+====
+
+
+.Windows版リンク
+----
+include::{includedir}/ex-url.adoc[tag=Windows版リンク]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=Windows版リンク]
+====
+
+
+.相対パス
+----
+include::{includedir}/ex-url.adoc[tag=相対パス]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=相対パス]
+====
+
+
+.メールとIRC
+----
+include::{includedir}/ex-url.adoc[tag=メールとIRC]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=メールとIRC]
+====
+
+
+.属性付きのリンク(Asciidoctor限定)
+----
+include::{includedir}/ex-url.adoc[tag=属性付きのリンク]
+----
+
+[.result]
+====
+include::{includedir}/ex-url.adoc[tag=属性付きのリンク]
+====
+
+NOTE: 属性付きリンクはAsciidoctor固有の機能です。
+機能を有効にするにはドキュメントの属性に`linkattrs`を指定してください。
+機能有効時は、カンマを含むリンクはクォートで囲む必要があります。
+
+
+
+.インラインアンカー
+----
+include::{includedir}/ex-xref.adoc[tag=インラインアンカー]
+----
+
+[.result]
+====
+include::{includedir}/ex-xref.adoc[tag=インラインアンカー]
+====
+
+
+.内部相互参照
+----
+include::{includedir}/ex-xref.adoc[tag=内部相互参照]
+----
+
+[.result]
+====
+include::{includedir}/ex-xref.adoc[tag=内部相互参照]
+====
+
+.ドキュメント間の相互参照
+----
+include::{includedir}/ex-xref.adoc[tag=ドキュメント間の相互参照]
+----
