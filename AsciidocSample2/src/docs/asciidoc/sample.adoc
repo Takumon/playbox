@@ -6,7 +6,7 @@
 :sectnums:
 :sectanchors:
 :description: Asciidotの文法のクイックリファレンスです。
-:imagedir: images
+:imagesdir: images
 :includedir: _includes
 
 
@@ -479,3 +479,74 @@ include::{includedir}/ex-xref.adoc[tag=内部相互参照]
 ----
 include::{includedir}/ex-xref.adoc[tag=ドキュメント間の相互参照]
 ----
+
+
+== 画像
+ドキュメント属性のlink:http://asciidoctor.org/docs/user-manual/#set-the-images-directory[imagedir](デフォルトは空文字)を
+起点にした相対パスを指定します。
+全ての画像パスに対して共通のパスをハードコードするのを避けるために``imagedir``の指定を推奨します。
+
+``imagedir``は絶対パス、相対パス、URLを指定できます。
+絶対パスとURLの場合はimagedirのプレフィックスは付きません。
+
+.ブロック画像
+----
+include::{includedir}/ex-image.adoc[tags=通常]
+
+include::{includedir}/ex-image.adoc[tags=alt属性使用]
+
+include::{includedir}/ex-image.adoc[tags=属性使用]
+
+include::{includedir}/ex-image.adoc[tags=URL指定]
+----
+
+[.result]
+====
+include::{includedir}/ex-image.adoc[tags=通常]
+
+include::{includedir}/ex-image.adoc[tags=alt属性使用]
+
+include::{includedir}/ex-image.adoc[tags=属性使用]
+
+include::{includedir}/ex-image.adoc[tags=URL指定]
+====
+
+
+
+.インラン画像
+----
+include::{includedir}/ex-image.adoc[tags=インライン]
+----
+
+[.result]
+====
+include::{includedir}/ex-image.adoc[tags=インライン]
+====
+
+
+IMPORTANT: ``image``というキーワードの後にある二つのコロンはブロック要素の画像を示し、
+一つの時はインライン要素の画像を示します。文章と同じ行に画像を挿入するならインランを使いますが、
+それ以外のときはブロック要素の画像を使用すべきです。
+
+
+.位置を指定したインライン画像
+----
+include::{includedir}/ex-image.adoc[tags=位置を指定したインライン]
+----
+
+[.result]
+====
+include::{includedir}/ex-image.adoc[tags=位置を指定したインライン]
+====
+
+NOTE: link:http://asciidoctor.org/docs/user-manual/#putting-images-in-their-place[画像の位置とフレーム]には様々な属性を指定できます。
+
+.画像データ埋め込み
+----
+include::{includedir}/ex-image.adoc[tags=画像データ埋め込み]
+----
+
+
+NOTE: ``data-uri``を設定すると、アイコンも含め全ての画像がドキュメントの中にlink:https://developer.mozilla.org/en-US/docs/data_URIs[data-uri]と埋め込まれます。
+
+TIP: ``data-uri``の代わりに、コマンドラインで``-a data-uri``オプションを付けることでも可能です。
