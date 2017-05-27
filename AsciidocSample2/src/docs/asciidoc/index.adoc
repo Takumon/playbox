@@ -926,3 +926,60 @@ include::{includedir}/ex-listing.adoc[tags=カスタム置換]
 ====
 include::{includedir}/ex-listing.adoc[tags=カスタム置換]
 ====
+
+
+== ID,ロール,オプションの指定
+=== ブロックへのIDとロールの指定
+----
+[[goals]]
+[role="incremental"]
+* Goal 1
+* Goal 2
+----
+
+=== ブロックへのIDとROLEの指定(簡略記法)
+----
+[#goals.incremental]
+* Goal 1
+* Goal 2
+----
+
+[TIP]
+====
+* 簡略記法で複数の``role``を指定するには、``.``区切りで指定してください。
+* 簡略記法において``id``と``role``の順番は特に関係ありません。
+====
+
+
+=== テキストへのIDとロールの指定
+----
+[[free_the_world]][big goal]_free the world_
+----
+
+=== テキストへのIDとロールを指定する(簡略記法、Asciidoctor限定)
+----
+[#free_the_world.big.goal]_free the world_
+----
+
+=== クオートで囲まれたテキストへのROLEの指定
+----
+[rolename]`monospace text`
+----
+
+
+=== オプションの指定
+----
+[options="header,footer,autowidth"]
+|===
+|Cell A |Cell B
+|===
+----
+
+
+=== オプションの指定(簡略記法、Asciidoctor限定)
+----
+[%header%footer%autowidth]
+|===
+|Cell A |Cell B
+|===
+----
