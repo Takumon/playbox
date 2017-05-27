@@ -1,22 +1,52 @@
 :lang:        ja
 :icons:       font
 :docinfo:
-:toc-title: 目次
+// 目次を表示する。左側に表示する。
 :toc: left
-:sectnums:
-:sectanchors:
+// 第何レベルまで目次を表示するか。
+:toclevels: 2
+// ドキュメントの説明。
 :description: Asciidotの文法のクイックリファレンスです。
+// 章番号を付けるか。属性を定義しておくだけで章番号が付けられる。
+:sectnums:
+// デフォルトの章番号の接頭辞「Chapter.」が表示されないよう、値を空で設定する。
+:sectanchors:
+// ソースコードをハイライトする。
+:source-highlighter: coderay
+
+// 各ラベルの日本語定義
+:toc-title: 目次
+:preface-title: はじめに
+:appendix-caption: 付録
+:caution-caption: 注意
+:example-caption: 例
+:figure-caption: 図
+:important-caption: 重要
+:last-update-label: 最終更新
+:manname-title: 名前
+:note-caption: 注記
+:preface-title: まえがき
+:table-caption: 表
+:tip-caption: ヒント
+:toc-title: 目次
+:untitled-label: 無題
+:version-label: バージョン
+:warning-caption: 警告
+:listing-caption: リスト
+
+// 変数定義。各資産のルートフォルダ
 :imagesdir: images
 :includedir: _includes
 :sourcedir: source
 
 
-= Asciidoctor文法
+
+= Asciidoctor 文法クイックリファレンス
 :linkattrs:
 
 == パラグラフ
 
-.通常
+=== 通常
 ----
 include::{includedir}/ex-text.adoc[tags=通常のパラグラフ]
 ----
@@ -27,7 +57,7 @@ include::{includedir}/ex-text.adoc[tags=通常のパラグラフ]
 ====
 
 
-.改行
+=== 改行
 ----
 include::{includedir}/ex-text.adoc[tags=改行]
 ----
@@ -39,7 +69,7 @@ include::{includedir}/ex-text.adoc[tags=改行]
 
 
 
-.リテラル
+=== リテラル
 ----
 include::{includedir}/ex-text.adoc[tags=リテラル]
 ----
@@ -49,7 +79,7 @@ include::{includedir}/ex-text.adoc[tags=リテラル]
 include::{includedir}/ex-text.adoc[tags=リテラル]
 ====
 
-.脚注
+=== 脚注
 ----
 include::{includedir}/ex-text.adoc[tags=脚注]
 ----
@@ -62,7 +92,7 @@ include::{includedir}/ex-text.adoc[tag=脚注]
 NOTE: <<脚注ブロック,脚注ブロック>>のような書き方も可能です。
 
 
-.リード
+=== リード
 ----
 include::{includedir}/ex-text.adoc[tag=リード]
 ----
@@ -74,7 +104,7 @@ include::{includedir}/ex-text.adoc[tag=リード]
 
 NOTE: Asciidoctorのデフォルトスタイルシートの場合、序文の最初のパラグラフにリードパラグラフのスタイルが自動で適用されます。
 
-.パラグラフ、リテラル、脚注ブロックの詳しい例は
+=== パラグラフ、リテラル、脚注ブロックの詳しい例
 ****
 Asciidoctor User Manual の下記セクションを参考にしてください。
 
@@ -86,7 +116,7 @@ Asciidoctor User Manual の下記セクションを参考にしてください�
 
 
 == テキストフォーマット
-.太字、イタリック、モノスペース
+=== 太字、イタリック、モノスペース
 ----
 include::{includedir}/ex-text.adoc[tag=太字-イタリック-モノスペース]
 ----
@@ -96,7 +126,7 @@ include::{includedir}/ex-text.adoc[tag=太字-イタリック-モノスペース
 include::{includedir}/ex-text.adoc[tag=太字-イタリック-モノスペース]
 ====
 
-.マーク、カスタムスタイル
+=== マーク、カスタムスタイル
 ----
 include::{includedir}/ex-text.adoc[tag=マーク-カスタムスタイル]
 ----
@@ -106,7 +136,7 @@ include::{includedir}/ex-text.adoc[tag=マーク-カスタムスタイル]
 include::{includedir}/ex-text.adoc[tag=マーク-カスタムスタイル]
 ====
 
-.スーパースクリプト、サブスクリプト
+=== スーパースクリプト、サブスクリプト
 ----
 include::{includedir}/ex-text.adoc[tag=スーパースクリプト-サブスクリプト]
 ----
@@ -116,8 +146,7 @@ include::{includedir}/ex-text.adoc[tag=スーパースクリプト-サブスク�
 include::{includedir}/ex-text.adoc[tag=スーパースクリプト-サブスクリプト]
 ====
 
-
-.カーブクォート、アポストロフィ
+=== カーブクォート、アポストロフィ
 ----
 include::{includedir}/ex-text.adoc[tag=カーブクォート-アポストロフィ]
 ----
@@ -130,7 +159,7 @@ include::{includedir}/ex-text.adoc[tag=カーブクォート-アポストロフ�
 NOTE: アポストロフィは日本語では使用しないので英語のままにしています。
 
 
-.テキストフォーマットの例は
+=== テキストフォーマットの例は
 ****
 Asciidoctor User Manual の下記セクションを参考にしてください。
 
@@ -149,26 +178,26 @@ IMPORTANT: ヘッダーはオプションです。
 CAUTION: ヘッダーは空行であることは許容されません。またコンテンツと最低一行以上は間隔を開ける必要があります。
 
 
-.タイトルのみ
+=== タイトルのみ
 ----
 include::{includedir}/ex-header-title.adoc[tag=通常]
 ----
 
-.タイトルと著者
+=== タイトルと著者
 ----
 include::{includedir}/ex-author.adoc[tag=通常]
 ----
 
 NOTE: 著者が複数人の場合はセミコロンで区切って記載してください。
 
-.タイトルと著者とリビジョン
+=== タイトルと著者とリビジョン
 ----
 include::{includedir}/ex-rev.adoc[tag=通常]
 ----
 
 IMPORTANT: 著者を定義していないとリビジョンを定義することはできません。
 
-.タイトルと属性
+=== タイトルと属性
 ----
 include::{includedir}/ex-header-attr.adoc[tag=通常]
 ----
@@ -176,7 +205,7 @@ include::{includedir}/ex-header-attr.adoc[tag=通常]
 [[セクションタイトル]]
 == セクションタイトル
 
-.記事形式
+=== 記事形式
 ----
 include::{includedir}/ex-section.adoc[tag=記事形式]
 ----
@@ -191,7 +220,7 @@ WARNING: 記事形式（デフォルト）を使用する場合、レベル0の�
 
 NOTE: ``=``の数がHTMLのヘッダーレベルと一致しています。例えば__レベル１のセクションのタイトル__は``<h2>``に変換されます。
 
-.本形式
+=== 本形式
 ----
 include::{includedir}/ex-section.adoc[tag=本形式]
 ----
@@ -201,7 +230,7 @@ include::{includedir}/ex-section.adoc[tag=本形式]
 include::{includedir}/ex-section.adoc[tag=本形式]
 ====
 
-.idを指定
+=== idを指定
 ----
 [[primitives-nulls]]
 == プリミティブ型とnull
@@ -224,7 +253,7 @@ NOTE: セクションタイトルアンカーは、プロパティをレンダ�
 
 == 別ファイルのインクルード
 
-.ドキュメントをインクルード
+=== ドキュメントをインクルード
 ----
 include::{includedir}/ex-include.adoc[tag=通常]
 ----
@@ -245,18 +274,18 @@ allow-uri-read AsciidoctorがURIからコンテンツを読み込むために``a
 
 
 == 水平罫線と改ページ
-.水平罫線
+=== 水平罫線
 ----
 include::{includedir}/ex-hr.adoc[tag=水平罫線]
 ----
 
-.改ページ
+=== 改ページ
 ----
 include::{includedir}/ex-hr.adoc[tag=改ページ]
 ----
 
 == リスト
-.順序無しリスト
+=== 順序無しリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=順序無しリスト]
 ----
@@ -271,14 +300,14 @@ NOTE: リストの前後には空白行が必須です。
 TIP: 行コメントで二つのリストを分割できます。
 コメント中の(`+^+`)はオプションですが、この行がリストの終わりということを意味するマーカです。
 
-.ネストした順序無しリスト
+=== ネストした順序無しリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=ネストした順序無しリスト]
 ----
 
 NOTE: 順序無しリストのマーカはlink:http://asciidoctor.org/docs/user-manual/#custom-markers[blocks style]で変更可能です。
 
-.チェックリスト
+=== チェックリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=チェックリスト]
 ----
@@ -290,7 +319,7 @@ include::{includedir}/ex-u-list.adoc[tag=チェックリスト]
 
 TIP: チェックリストはlink:http://asciidoctor.org/docs/user-manual/#checklist[font-based icons and be interactive]を使うこともできます。
 
-.順序有りリスト
+=== 順序有りリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=順序有りリスト]
 ----
@@ -301,7 +330,7 @@ include::{includedir}/ex-u-list.adoc[tag=順序有りリスト]
 ====
 
 
-.ネストした順序有りリスト
+=== ネストした順序有りリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=ネストした順序有りリスト]
 ----
@@ -312,7 +341,7 @@ include::{includedir}/ex-u-list.adoc[tag=ネストした順序有りリスト]
 ====
 
 
-.最もネストした順序有りリスト
+=== 最もネストした順序有りリスト
 ----
 include::{includedir}/ex-u-list.adoc[tag=最もネストした順序有りリスト]
 ----
@@ -328,7 +357,7 @@ TIP: 順序有りリスト用にAsciidoctorはlink:http://asciidoctor.org/docs/u
 
 
 
-.ラベル(単一行)
+=== ラベル(単一行)
 ----
 include::{includedir}/ex-dlist.adoc[tag=ラベル(単一行)]
 ----
@@ -339,8 +368,7 @@ include::{includedir}/ex-dlist.adoc[tag=ラベル(単一行)]
 ====
 
 
-
-.ラベル(複数行)
+=== ラベル(複数行)
 ----
 include::{includedir}/ex-dlist.adoc[tag=ラベル(複数行)]
 ----
@@ -351,7 +379,7 @@ include::{includedir}/ex-dlist.adoc[tag=ラベル(複数行)]
 ====
 
 
-.Q&A
+=== Q&A
 ----
 include::{includedir}/ex-dlist.adoc[tag=Q&A]
 ----
@@ -361,7 +389,7 @@ include::{includedir}/ex-dlist.adoc[tag=Q&A]
 include::{includedir}/ex-dlist.adoc[tag=Q&A]
 ====
 
-.リストとラベルの組み合わせ
+=== リストとラベルの組み合わせ
 ----
 include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
 ----
@@ -374,7 +402,7 @@ include::{includedir}/ex-dlist.adoc[tag=リストとラベルの組み合わせ]
 TIP: ラベルはネスト可能です。行の冒頭のスペースは重要ではありません(あってもなくてもいいです)。
 
 
-.アウトライン中の複雑なコンテンツ
+=== アウトライン中の複雑なコンテンツ
 ----
 include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコンテンツ]
 ----
@@ -385,7 +413,7 @@ include::{includedir}/ex-dlist.adoc[tag=アウトライン中の複雑なコン�
 ====
 
 == リンク
-.通常のリンク
+=== 通常のリンク
 ----
 include::{includedir}/ex-url.adoc[tag=通常のリンク]
 ----
@@ -395,7 +423,7 @@ include::{includedir}/ex-url.adoc[tag=通常のリンク]
 include::{includedir}/ex-url.adoc[tag=通常のリンク]
 ====
 
-.スペースと特殊文字を含んだリンク
+=== スペースと特殊文字を含んだリンク
 ----
 include::{includedir}/ex-url.adoc[tag=スペースと特殊文字を含んだリンク]
 ----
@@ -406,7 +434,7 @@ include::{includedir}/ex-url.adoc[tag=スペースと特殊文字を含んだリ
 ====
 
 
-.Windows版リンク
+=== Windows版リンク
 ----
 include::{includedir}/ex-url.adoc[tag=Windows版リンク]
 ----
@@ -417,7 +445,7 @@ include::{includedir}/ex-url.adoc[tag=Windows版リンク]
 ====
 
 
-.相対パス
+=== 相対パス
 ----
 include::{includedir}/ex-url.adoc[tag=相対パス]
 ----
@@ -428,7 +456,7 @@ include::{includedir}/ex-url.adoc[tag=相対パス]
 ====
 
 
-.メールとIRC
+=== メールとIRC
 ----
 include::{includedir}/ex-url.adoc[tag=メールとIRC]
 ----
@@ -439,7 +467,7 @@ include::{includedir}/ex-url.adoc[tag=メールとIRC]
 ====
 
 
-.属性付きのリンク(Asciidoctor限定)
+=== 属性付きのリンク(Asciidoctor限定)
 ----
 include::{includedir}/ex-url.adoc[tag=属性付きのリンク]
 ----
@@ -455,7 +483,7 @@ NOTE: 属性付きリンクはAsciidoctor固有の機能です。
 
 
 
-.インラインアンカー
+=== インラインアンカー
 ----
 include::{includedir}/ex-xref.adoc[tag=インラインアンカー]
 ----
@@ -466,7 +494,7 @@ include::{includedir}/ex-xref.adoc[tag=インラインアンカー]
 ====
 
 
-.内部相互参照
+=== 内部相互参照
 ----
 include::{includedir}/ex-xref.adoc[tag=内部相互参照]
 ----
@@ -476,7 +504,7 @@ include::{includedir}/ex-xref.adoc[tag=内部相互参照]
 include::{includedir}/ex-xref.adoc[tag=内部相互参照]
 ====
 
-.ドキュメント間の相互参照
+=== ドキュメント間の相互参照
 ----
 include::{includedir}/ex-xref.adoc[tag=ドキュメント間の相互参照]
 ----
@@ -490,7 +518,7 @@ include::{includedir}/ex-xref.adoc[tag=ドキュメント間の相互参照]
 ``imagedir``は絶対パス、相対パス、URLを指定できます。
 絶対パスとURLの場合はimagedirのプレフィックスは付きません。
 
-.ブロック画像
+=== ブロック画像
 ----
 include::{includedir}/ex-image.adoc[tags=通常]
 
@@ -514,7 +542,7 @@ include::{includedir}/ex-image.adoc[tags=URL指定]
 
 
 
-.インラン画像
+=== インラン画像
 ----
 include::{includedir}/ex-image.adoc[tags=インライン]
 ----
@@ -542,7 +570,7 @@ include::{includedir}/ex-image.adoc[tags=位置を指定したインライン]
 
 NOTE: link:http://asciidoctor.org/docs/user-manual/#putting-images-in-their-place[画像の位置とフレーム]には様々な属性を指定できます。
 
-.画像データ埋め込み
+=== 画像データ埋め込み
 ----
 include::{includedir}/ex-image.adoc[tags=画像データ埋め込み]
 ----
@@ -555,7 +583,7 @@ TIP: ``data-uri``の代わりに、コマンドラインで``-a data-uri``オプ
 
 == 動画
 
-.ブロック要素
+=== ブロック要素
 ----
 include::{includedir}/ex-video.adoc[tags=ブロック要素]
 
@@ -563,7 +591,7 @@ include::{includedir}/ex-video.adoc[tags=ブロック要素]
 include::{includedir}/ex-video.adoc[tags=属性指定]
 ----
 
-.Youtube
+=== Youtube
 ----
 include::{includedir}/ex-video.adoc[tags=動画youtube]
 ----
@@ -574,7 +602,7 @@ include::{includedir}/ex-video.adoc[tags=動画youtube]
 ====
 
 
-.Vimeo
+=== Vimeo
 ----
 include::{includedir}/ex-video.adoc[tags=動画vimeo]
 ----
@@ -589,7 +617,7 @@ TIP: link:http://asciidoctor.org/docs/user-manual/#video[追加の属性とオ�
 
 
 == ソースコード
-.インライン要素
+=== インライン要素
 ----
 include::{includedir}/ex-text.adoc[tags=インラインコード]
 ----
@@ -599,7 +627,7 @@ include::{includedir}/ex-text.adoc[tags=インラインコード]
 include::{includedir}/ex-text.adoc[tags=インラインコード]
 ====
 
-.リテラル（１行）
+=== リテラル（１行）
 ----
 include::{includedir}/ex-literal.adoc[tags=リテラル行コード]
 ----
@@ -610,7 +638,7 @@ include::{includedir}/ex-literal.adoc[tags=リテラル行コード]
 ====
 
 
-.リテラル（ブロック要素）
+=== リテラル（ブロック要素）
 ----
 include::{includedir}/ex-literal.adoc[tags=リテラルブロックコード]
 ----
@@ -621,7 +649,7 @@ include::{includedir}/ex-literal.adoc[tags=リテラルブロックコード]
 ====
 
 [listing]
-.タイトル付きブロック要素（シンタックスハイライトなし）
+=== タイトル付きブロック要素（シンタックスハイライトなし）
 ....
 include::{includedir}/ex-listing.adoc[tags=タイトル付きブロック要素（シンタックスハイライトなし）]
 ....
@@ -632,7 +660,7 @@ include::{includedir}/ex-listing.adoc[tags=タイトル付きブロック要素�
 ====
 
 [listing]
-.タイトル付きブロック要素（シンタックスハイライトあり）
+=== タイトル付きブロック要素（シンタックスハイライトあり）
 ....
 include::{includedir}/ex-src.adoc[tags=タイトル付きブロック要素（シンタックスハイライトあり）]
 ....
@@ -644,7 +672,7 @@ include::{includedir}/ex-src.adoc[tags=タイトル付きブロック要素（�
 
 
 [listing, subs="specialcharacters"]
-.吹き出し付きブロック要素
+=== 吹き出し付きブロック要素
 ....
 include::{includedir}/ex-callout.adoc[tags=吹き出し付きブロック要素]
 ....
@@ -656,7 +684,7 @@ include::{includedir}/ex-callout.adoc[tags=吹き出し付きブロック要素]
 
 
 [listing, subs="specialcharacters"]
-.いろいろな吹き出し付きブロック要素
+=== いろいろな吹き出し付きブロック要素
 ....
 include::{includedir}/ex-callout.adoc[tags=いろいろな吹き出し付きブロック要素]
 ....
@@ -668,7 +696,7 @@ include::{includedir}/ex-callout.adoc[tags=いろいろな吹き出し付きブ�
 
 
 [listing, subs="specialcharacters"]
-.吹き出し付きXMLブロック要素
+=== 吹き出し付きXMLブロック要素
 ....
 include::{includedir}/ex-callout.adoc[tags=吹き出し付きXMLブロック要素]
 ....
@@ -679,13 +707,13 @@ include::{includedir}/ex-callout.adoc[tags=吹き出し付きXMLブロック要�
 ====
 
 [listing]
-.ソースコードファイル読み込み
+=== ソースコードファイル読み込み
 ....
 include::{includedir}/ex-src.adoc[tags=ソースコードファイル読み込み]
 ....
 
 [listing]
-.ソースコードファイル読み込み(ソースコードフォルダからの相対パス指定)
+=== ソースコードファイル読み込み(ソースコードフォルダからの相対パス指定)
 ....
 [source,java]
 ----
@@ -702,7 +730,7 @@ include::{sourcedir}/StringUtils.java[]
 ====
 
 [listing]
-.ソースコードファイル読み込み(インデント指定)
+=== ソースコードファイル読み込み(インデント指定)
 ....
 [source,java,indent=0]
 ----
@@ -747,7 +775,7 @@ include::{sourcedir}/StringUtils.java[lines=5..7]
 * ``indent``が1以上の場合、基本のインデントレベルが指定した値になります。（タブは4つのスペースに置換されます。）
 ====
 
-.区切り文字なしのブロック要素
+=== 区切り文字なしのブロック要素
 ----
 include::{includedir}/ex-src.adoc[tags=区切り文字なしのブロック要素]
 ----
@@ -759,7 +787,7 @@ include::{includedir}/ex-src.adoc[tags=区切り文字なしのブロック要�
 
 
 [IMPORTANT]
-.シンタックスハイライトを有効にするには
+=== シンタックスハイライトを有効にするには
 ====
 ``source-highlighter``属性をドキュメントヘッダーに付けるか、実行時に引数で渡すことで有効になります。
 

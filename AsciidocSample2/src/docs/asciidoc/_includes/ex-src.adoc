@@ -38,5 +38,6 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <meta name="viewport"
   content="width=device-width, initial-scale=1.0">
 
+
 この行は通常のコンテンツです。
 // end::区切り文字なしのブロック要素[]

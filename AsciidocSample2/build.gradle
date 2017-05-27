@@ -38,7 +38,6 @@ asciidoctor {
         'pdf-fontsdir' : "$rootDir/src/fonts", // フォント格納フォルダ
         'pdf-stylesdir' : "$rootDir/src/theme",     // テーマ格納フォルダ
         'pdf-style' : 'custom-theme.yml',        // テーマファイル名
-        'source-highlighter' : 'coderay',
     )
 }
 
