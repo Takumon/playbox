@@ -795,3 +795,134 @@ include::{includedir}/ex-src.adoc[tags=区切り文字なしのブロック要�
 
 値は``coderay``、``highlightjs``、``prettify``、``pygments``を指定できます。
 ====
+
+== その他のブロック
+=== サイドバー
+----
+include::{includedir}/ex-sidebar.adoc[tags=サイドバー]
+----
+
+[.result]
+====
+include::{includedir}/ex-sidebar.adoc[tags=サイドバー]
+====
+
+
+NOTE: どんなブロックでも、ブロックの上にタイトルを付けることができます。
+タイトルは``.``で始まるテキスト行です。
+``.``のあとにスペースを定義することはできません。
+
+=== 例
+----
+include::{includedir}/ex-example.adoc[tags=通常の例]
+----
+
+[.result]
+--
+include::{includedir}/ex-example.adoc[tags=通常の例]
+--
+
+
+=== 脚注
+----
+include::{includedir}/ex-admon.adoc[tags=ブロック]
+----
+
+[.result]
+=====
+include::{includedir}/ex-admon.adoc[tags=ブロック]
+=====
+
+
+[TIP]
+.脚注と吹き出しのアイコン
+====
+Asciidoctorではlink:http://fortawesome.github.io/Font-Awesome/[Font-Awesome^]とCSSを使って "`描く`" ことができます。
+
+これらを使うには、ドキュメント属性の``font``に値``icons``を設定してください.
+設定するとHTML生成時にそれぞれの脚注に対して最適なアイコンが選択されます。
+
+link:http://asciidoctor.org/docs/user-manual/#inline-icons[inline]と
+link:http://asciidoctor.org/docs/user-manual/#size-rotate-and-flip[styled]でも
+アイコンは使用可能です。
+====
+
+
+=== ブロッククォート
+----
+include::{includedir}/ex-quote.adoc[tags=ブロック]
+
+include::{includedir}/ex-quote.adoc[tags=インライン]
+
+include::{includedir}/ex-quote.adoc[tags=引用なし]
+
+include::{includedir}/ex-quote.adoc[tags=リンクテキスト]
+----
+
+[.result]
+====
+include::{includedir}/ex-quote.adoc[tags=ブロック]
+
+include::{includedir}/ex-quote.adoc[tags=インライン]
+
+include::{includedir}/ex-quote.adoc[tags=引用なし]
+
+include::{includedir}/ex-quote.adoc[tags=リンクテキスト]
+====
+
+
+=== 簡略ブロッククォート(Asciidoctor限定)
+----
+include::{includedir}/ex-quote.adoc[tags=簡略記法]
+----
+
+[.result]
+====
+include::{includedir}/ex-quote.adoc[tags=簡略記法]
+====
+
+
+=== Airクォート(Asciidoctor限定)
+----
+include::{includedir}/ex-quote.adoc[tags=air]
+----
+
+[.result]
+====
+include::{includedir}/ex-quote.adoc[tags=air]
+====
+
+=== 変換せずに出力
+----
+include::{includedir}/ex-pass.adoc[tags=変換せずに出力]
+----
+
+[.result]
+====
+include::{includedir}/ex-pass.adoc[tags=変換せずに出力]
+====
+
+
+=== オープン
+----
+include::{includedir}/ex-open.adoc[tags=基本]
+
+include::{includedir}/ex-open.adoc[tags=ソース]
+----
+
+[.result]
+====
+include::{includedir}/ex-open.adoc[tags=基本]
+
+include::{includedir}/ex-open.adoc[tags=ソース]
+====
+
+=== カスタム置換
+-----
+include::{includedir}/ex-listing.adoc[tags=カスタム置換]
+-----
+
+[.result]
+====
+include::{includedir}/ex-listing.adoc[tags=カスタム置換]
+====

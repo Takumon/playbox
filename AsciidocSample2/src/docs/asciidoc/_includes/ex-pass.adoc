@@ -1,0 +1,10 @@
+// tag::変換せずに出力[]
+++++
+<p>
+``+``で囲まれたブロックは、変換処理を行わずにそのままHMTLに出力されます。
+</p>
+
+<script src="http://gist.github.com/mojavelinux/5333524.js">
+</script>
+++++
+// end::変換せずに出力[]
