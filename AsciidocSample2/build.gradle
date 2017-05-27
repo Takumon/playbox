@@ -34,12 +34,23 @@ asciidoctor {
 
     attributes (
         'build-gradle': file('build.gradle'),
-        'imagesdir' : "images",
         'pdf-fontsdir' : "$rootDir/src/fonts", // フォント格納フォルダ
-        'pdf-stylesdir' : "$rootDir/src/theme",     // テーマ格納フォルダ
-        'pdf-style' : 'custom-theme.yml',        // テーマファイル名
+        'stylesdir' : "$rootDir/src/theme/html5", // スタイルシート格納フォルダ
+        'stylesheet' : 'maker.css', // スタイルシートファイル名
+        'pdf-stylesdir' : "$rootDir/src/theme/pdf",     // PDFテーマ格納フォルダ
+        'pdf-style' : 'custom-theme.yml',        // PDFテーマファイル名
     )
+
+    // スタイルシート用画像フォルダをビルド先にコピー
+    doLast {
+        print outputDir
+        copy {
+            from "$rootDir/src/theme/html5/images"
+            into "$outputDir/images"
+        }
+    }
 }
+
 
 
 liveReload {
