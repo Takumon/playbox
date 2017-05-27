@@ -13,6 +13,8 @@
 :sectanchors:
 // ソースコードをハイライトする。
 :source-highlighter: coderay
+// UIマクロを有効にする
+:experimental:
 
 // 各ラベルの日本語定義
 :toc-title: 目次
@@ -983,3 +985,123 @@ include::{includedir}/ex-listing.adoc[tags=カスタム置換]
 |Cell A |Cell B
 |===
 ----
+
+== コメント
+=== 行コメント
+----
+include::{includedir}/ex-comment.adoc[tags=行]
+----
+
+=== ブロックコメント
+----
+include::{includedir}/ex-comment.adoc[tags=ブロック]
+----
+
+
+== テーブル
+=== タイトル、ヘッダ付き2×3
+----
+include::{includedir}/ex-table.adoc[tags=基本]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=基本]
+====
+
+<1> ``cols``属性が未指定の場合は、最初の１行目のカラムの数がテーブルの列数となります。
+<2> 最初の行のあとが空行の場合は、最初の行はヘッダー行とみなされます。
+
+=== AsciiDocコンテンツ入り
+----
+include::{includedir}/ex-table.adoc[tags=AsciiDocコンテンツ入り]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=AsciiDocコンテンツ入り]
+====
+
+=== CSV読み込み
+----
+include::{includedir}/ex-table.adoc[tags=CSV]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=CSV]
+====
+
+=== CSV読み込み(簡略記法、Asciidoctor限定）
+----
+include::{includedir}/ex-table.adoc[tags=CSV簡略記法]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=CSV簡略記法]
+====
+
+
+=== CSVファイル読み込み
+----
+|===
+include::customers.csv[]
+|===
+----
+
+=== DSV読み込み(簡略記法、Asciidoctor限定)
+----
+include::{includedir}/ex-table.adoc[tags=DSV簡略記法]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=DSV簡略記法]
+====
+
+=== 整形、セル結合
+----
+include::{includedir}/ex-table.adoc[tags=整形とセル結合]
+----
+
+[.result]
+====
+include::{includedir}/ex-table.adoc[tags=整形とセル結合]
+====
+
+
+== UIマクロ
+
+IMPORTANT: マクロを使用可能にするには、ドキュメントヘッダーぶ``experimental``属性を指定する必要があります。
+
+=== キーボードショートカット
+----
+include::{includedir}/ex-ui.adoc[tags=キーボード]
+----
+
+[.result]
+====
+include::{includedir}/ex-ui.adoc[tags=キーボード]
+====
+
+=== メニュー
+----
+include::{includedir}/ex-ui.adoc[tags=メニュー]
+----
+
+[.result]
+====
+include::{includedir}/ex-ui.adoc[tags=メニュー]
+====
+
+
+=== ボタン
+----
+include::{includedir}/ex-ui.adoc[tags=ボタン]
+----
+
+[.result]
+====
+include::{includedir}/ex-ui.adoc[tags=ボタン]
+====

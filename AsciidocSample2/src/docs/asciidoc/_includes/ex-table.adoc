@@ -1,0 +1,72 @@
+// tag::基本[]
+.テーブルタイトル
+|===
+|カラム名1 |カラム名2 |カラム名3 // <1>
+// <2>
+|セル11
+|セル12
+|セル13
+
+|セル21
+|セル22
+|セル23
+|===
+// end::基本[]
+
+
+// tag::AsciiDocコンテンツ入り[]
+[cols="2,2,5a"]
+|===
+|Firefox
+|ブラウザ
+|FirefoxはオープンソースのWEBブラウザです。
+
+下記のような特徴があります。:
+
+* 標準仕様準拠
+* 高パフォーマンス
+* 高い可搬性
+
+http://getfirefox.com[Firefoxをダウンロードする]!
+|===
+// end::AsciiDocコンテンツ入り[]
+
+
+// tag::CSV[]
+[format="csv", options="header"]
+|===
+アーティスト,トラック,ジャンル
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+// end::CSV[]
+
+// tag::CSV簡略記法[]
+[format="csv", options="header"]
+,===
+アーティスト,トラック,ジャンル
+
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+,===
+// end::CSV簡略記法[]
+
+
+// tag::DSV簡略記法[]
+:===
+Artist:Track:Genre
+
+Robyn:Indestructable:Dance
+:===
+// end::DSV簡略記法[]
+
+
+// tag::整形とセル結合[]
+[cols="e,m,^,>s", width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
+// end::整形とセル結合[]
