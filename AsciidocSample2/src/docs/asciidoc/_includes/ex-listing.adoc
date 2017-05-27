@@ -1,0 +1,15 @@
+// tag::タイトル付きブロック要素（シンタックスハイライトなし）[]
+.Gemfile.lock
+----
+GEM
+  remote: https://rubygems.org/
+  specs:
+    asciidoctor (0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  asciidoctor (~> 0.1.4)
+----
+// end::タイトル付きブロック要素（シンタックスハイライトなし）[]

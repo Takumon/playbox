@@ -8,6 +8,7 @@
 :description: Asciidotの文法のクイックリファレンスです。
 :imagesdir: images
 :includedir: _includes
+:sourcedir: source
 
 
 = Asciidoctor文法
@@ -526,7 +527,7 @@ include::{includedir}/ex-image.adoc[tags=インライン]
 
 IMPORTANT: ``image``というキーワードの後にある二つのコロンはブロック要素の画像を示し、
 一つの時はインライン要素の画像を示します。文章と同じ行に画像を挿入するならインランを使いますが、
-それ以外のときはブロック要素の画像を使用すべきです。
+それ以外の場合場合はブロック要素の画像を使用すべきです。
 
 
 .位置を指定したインライン画像
@@ -550,3 +551,219 @@ include::{includedir}/ex-image.adoc[tags=画像データ埋め込み]
 NOTE: ``data-uri``を設定すると、アイコンも含め全ての画像がドキュメントの中にlink:https://developer.mozilla.org/en-US/docs/data_URIs[data-uri]と埋め込まれます。
 
 TIP: ``data-uri``の代わりに、コマンドラインで``-a data-uri``オプションを付けることでも可能です。
+
+
+== 動画
+
+.ブロック要素
+----
+include::{includedir}/ex-video.adoc[tags=ブロック要素]
+
+
+include::{includedir}/ex-video.adoc[tags=属性指定]
+----
+
+.Youtube
+----
+include::{includedir}/ex-video.adoc[tags=動画youtube]
+----
+
+[.result]
+====
+include::{includedir}/ex-video.adoc[tags=動画youtube]
+====
+
+
+.Vimeo
+----
+include::{includedir}/ex-video.adoc[tags=動画vimeo]
+----
+
+[.result]
+====
+include::{includedir}/ex-video.adoc[tags=動画vimeo]
+====
+
+TIP: link:http://asciidoctor.org/docs/user-manual/#video[追加の属性とオプション]を設定することで動画を制御できます。
+
+
+
+== ソースコード
+.インライン要素
+----
+include::{includedir}/ex-text.adoc[tags=インラインコード]
+----
+
+[.result]
+====
+include::{includedir}/ex-text.adoc[tags=インラインコード]
+====
+
+.リテラル（１行）
+----
+include::{includedir}/ex-literal.adoc[tags=リテラル行コード]
+----
+
+[.result]
+====
+include::{includedir}/ex-literal.adoc[tags=リテラル行コード]
+====
+
+
+.リテラル（ブロック要素）
+----
+include::{includedir}/ex-literal.adoc[tags=リテラルブロックコード]
+----
+
+[.result]
+====
+include::{includedir}/ex-literal.adoc[tags=リテラルブロックコード]
+====
+
+[listing]
+.タイトル付きブロック要素（シンタックスハイライトなし）
+....
+include::{includedir}/ex-listing.adoc[tags=タイトル付きブロック要素（シンタックスハイライトなし）]
+....
+
+[.result]
+====
+include::{includedir}/ex-listing.adoc[tags=タイトル付きブロック要素（シンタックスハイライトなし）]
+====
+
+[listing]
+.タイトル付きブロック要素（シンタックスハイライトあり）
+....
+include::{includedir}/ex-src.adoc[tags=タイトル付きブロック要素（シンタックスハイライトあり）]
+....
+
+[.result]
+====
+include::{includedir}/ex-src.adoc[tags=タイトル付きブロック要素（シンタックスハイライトあり）]
+====
+
+
+[listing, subs="specialcharacters"]
+.吹き出し付きブロック要素
+....
+include::{includedir}/ex-callout.adoc[tags=吹き出し付きブロック要素]
+....
+
+[.result]
+====
+include::{includedir}/ex-callout.adoc[tags=吹き出し付きブロック要素]
+====
+
+
+[listing, subs="specialcharacters"]
+.いろいろな吹き出し付きブロック要素
+....
+include::{includedir}/ex-callout.adoc[tags=いろいろな吹き出し付きブロック要素]
+....
+
+[.result]
+====
+include::{includedir}/ex-callout.adoc[tags=いろいろな吹き出し付きブロック要素]
+====
+
+
+[listing, subs="specialcharacters"]
+.吹き出し付きXMLブロック要素
+....
+include::{includedir}/ex-callout.adoc[tags=吹き出し付きXMLブロック要素]
+....
+
+[.result]
+====
+include::{includedir}/ex-callout.adoc[tags=吹き出し付きXMLブロック要素]
+====
+
+[listing]
+.ソースコードファイル読み込み
+....
+include::{includedir}/ex-src.adoc[tags=ソースコードファイル読み込み]
+....
+
+[listing]
+.ソースコードファイル読み込み(ソースコードフォルダからの相対パス指定)
+....
+[source,java]
+----
+\include::{sourcedir}/StringUtils.java[]
+----
+....
+
+[.result]
+====
+[source,java]
+----
+include::{sourcedir}/StringUtils.java[]
+----
+====
+
+[listing]
+.ソースコードファイル読み込み(インデント指定)
+....
+[source,java,indent=0]
+----
+\include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+
+[source,java,indent=1]
+----
+\include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+
+
+[source,java,indent=2]
+----
+\include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+....
+
+
+[.result]
+====
+[source,java,indent=0]
+----
+include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+
+[source,java,indent=1]
+----
+include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+
+[source,java,indent=2]
+----
+include::{sourcedir}/StringUtils.java[lines=5..7]
+----
+====
+
+
+[NOTE]
+====
+* ``indent``が0の場合、インデントは除去されます。（タブは4つのスペースに置換されます。）
+* ``indent``が1以上の場合、基本のインデントレベルが指定した値になります。（タブは4つのスペースに置換されます。）
+====
+
+.区切り文字なしのブロック要素
+----
+include::{includedir}/ex-src.adoc[tags=区切り文字なしのブロック要素]
+----
+
+[.result]
+====
+include::{includedir}/ex-src.adoc[tags=区切り文字なしのブロック要素]
+====
+
+
+[IMPORTANT]
+.シンタックスハイライトを有効にするには
+====
+``source-highlighter``属性をドキュメントヘッダーに付けるか、実行時に引数で渡すことで有効になります。
+
+ :source-highlighter: pygments
+
+値は``coderay``、``highlightjs``、``prettify``、``pygments``を指定できます。
+====

@@ -137,3 +137,7 @@ Olaf had been with the company since the `'60s.
 ======= セッションタイトル レベル7
 レベル７は存在しない
 // end::external[]
+
+// tag::インラインコード[]
+`types` や `methods` のような参照コード。
+// end::インラインコード[]

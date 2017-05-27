@@ -34,7 +34,6 @@ asciidoctor {
 
     attributes (
         'build-gradle': file('build.gradle'),
-        'sourcedir': source,
         'imagesdir' : "images",
         'pdf-fontsdir' : "$rootDir/src/fonts", // フォント格納フォルダ
         'pdf-stylesdir' : "$rootDir/src/theme",     // テーマ格納フォルダ
