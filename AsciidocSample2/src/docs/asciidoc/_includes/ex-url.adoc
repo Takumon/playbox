@@ -1,10 +1,10 @@
-// tag::通常のリンク[]
+// tag::基本[]
 http://asciidoctor.org - 自動でリンクになります。
 
 http://asciidoctor.org[Asciidoctor]
 
 https://github.com/asciidoctor[Asciidoctor @ *GitHub*]
-// end::通常のリンク[]
+// end::基本[]
 
 
 // tag::スペースと特殊文字を含んだリンク[]
@@ -13,9 +13,11 @@ link:++http://example.org/?q=[a b]++[空白を含むURL]
 link:http://example.org/?q=%5Ba%20b%5D[特殊文字を含んだリンク]
 // end::スペースと特殊文字を含んだリンク[]
 
+
 // tag::Windows版リンク[]
 link:\\server\share\whitepaper.pdf[Whitepaper]
 // end::Windows版リンク[]
+
 
 // tag::相対パス[]
 link:index.html[ドキュメント]
@@ -31,6 +33,7 @@ mailto:devel-join@discuss.arquillian.org[購読する, 購読します, 参加�
 
 irc://irc.freenode.org/#asciidoctor
 // end::メールとIRC[]
+
 
 // tag::属性付きのリンク[]
 http://discuss.asciidoctor.org[Asciidoctorについて議論する, role="external", window="_blank"]

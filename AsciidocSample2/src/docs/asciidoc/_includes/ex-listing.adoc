@@ -15,7 +15,7 @@ DEPENDENCIES
 // end::タイトル付きブロック要素（シンタックスハイライトなし）[]
 
 
-// tag::カスタム置換[]
+// tag::カスタム置換属性[]
 :version: 0.1.4
 
 [source,xml,subs="verbatim,attributes"]
@@ -26,4 +26,4 @@ DEPENDENCIES
   <version>{version}</version>
 </dependency>
 ----
-// end::カスタム置換[]
+// end::カスタム置換属性[]
