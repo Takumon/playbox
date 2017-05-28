@@ -1192,3 +1192,94 @@ include::{includedir}/ex-toc.adoc[tags=ポジション]
 ----
 
 TIP: 目次のlink: title, levels, and positioning [タイトル、レベル、位置]はカスタムできます。
+
+
+== 参考文献
+=== リファレンス
+----
+include::{includedir}/ex-biblio.adoc[tags=基本]
+----
+
+[.result]
+====
+include::{includedir}/ex-biblio.adoc[tags=基本]
+====
+
+
+[[section-footnotes]]
+== フットノート
+=== 再利用可能
+----
+include::{includedir}/ex-footnote.adoc[tags=基本]
+----
+
+[.result]
+====
+[.unstyled]
+|===
+a|
+include::{includedir}/ex-footnote.adoc[tags=基本]
+|===
+====
+
+
+[#markdown-compatibility]
+== マークダウン形式
+
+Asciidoctor限定でマークダウン形式での記述が可能です。
+
+.ヘッダー
+----
+include::{includedir}/ex-section.adoc[tags=マークダウン形式]
+----
+
+[.result]
+====
+include::{includedir}/ex-section.adoc[tags=マークダウン形式]
+====
+
+=== フェンスコードブロック(シンタックスハイライトあり)
+----
+include::{includedir}/ex-src.adoc[tags=フェンス]
+----
+
+[.result]
+====
+include::{includedir}/ex-src.adoc[tags=フェンス]
+====
+
+=== バッククォート
+----
+include::{includedir}/ex-quote.adoc[tags=マークダウン形式]
+----
+
+[.result]
+====
+include::{includedir}/ex-quote.adoc[tags=マークダウン形式]
+====
+
+=== ブロッククォート
+----
+include::{includedir}/ex-quote.adoc[tags=マークダウン形式ブロック]
+----
+
+[.result]
+====
+include::{includedir}/ex-quote.adoc[tags=マークダウン形式ブロック]
+====
+
+=== 水平罫線
+----
+include::{includedir}/ex-hr.adoc[tags=マークダウン形式]
+----
+
+[.result]
+====
+include::{includedir}/ex-hr.adoc[tags=マークダウン形式]
+====
+
+== ユーザマニュアルとヘプル
+
+Asciidoctorについてより学びたい場合は、link:http://asciidoctor.org/docs[Asciidoctorガイド]の
+link:http://asciidoctor.org/docs/user-manual[ユーザーマニュアル]をご覧ください。
+link:http://discuss.asciidoctor.org/[Asciidoctorのメーリングリスト]への参加も忘れずに！質問、コメントお待ちしています。

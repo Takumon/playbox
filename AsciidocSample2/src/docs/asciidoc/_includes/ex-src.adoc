@@ -41,3 +41,14 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 
 この行は通常のコンテンツです。
 // end::区切り文字なしのブロック要素[]
+
+
+// tag::フェンス[]
+```ruby
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+```
+// end::フェンス[]
