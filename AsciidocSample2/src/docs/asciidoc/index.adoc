@@ -1105,3 +1105,90 @@ include::{includedir}/ex-ui.adoc[tags=ボタン]
 ====
 include::{includedir}/ex-ui.adoc[tags=ボタン]
 ====
+
+== 属性
+
+=== 定義と使用方法
+----
+include::{includedir}/ex-header-attr.adoc[tags=属性の定義と使用方法]
+----
+
+[.result]
+====
+// I have to use a nested doc hack here, otherwise the attributes won't resolve
+[.unstyled]
+|===
+a|
+include::{includedir}/ex-header-attr.adoc[tags=属性の定義と使用方法]
+|===
+====
+
+=== 属性の優先順位 (高いものから列挙)
+- APIまたはコマンドラインで指定した属性(終端文字が``@``でないもの)
+- ドキュメント中に定義した属性
+- APIまたはコマンドラインで指定した属性(終端文字が``@``のもの)
+- デフォルト属性値
+
+TIP: ドキュメント中に定義した属性よりも優先度が低い属性をAPIとコマンドラインで指定するには、属性値の終わりに``@``を付けます。
+
+
+include::{includedir}/attrs-charref.adoc[tags=table]
+
+include::{includedir}/attr-env.adoc[tags=table]
+
+
+=== 特殊文字の置換
+include::{includedir}/subs-apply.adoc[tags=group]
+
+
+=== カウンター属性
+----
+include::{includedir}/ex-counter.adoc[tags=基本]
+----
+
+[.result]
+====
+include::{includedir}/ex-counter.adoc[tags=基本]
+====
+
+== テキスト置換
+
+include::{includedir}/subs-symbol-repl.adoc[]
+
+TIP: 任意の名前付き、または16進数のlink:https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references[XMLエンティティ参照]がサポートされています。
+
+
+== テキストのエスケープ
+
+=== バックスラッシュ
+----
+include::{includedir}/ex-subs.adoc[tags=バックスラッシュ]
+----
+
+[.result]
+====
+include::{includedir}/ex-subs.adoc[tags=バックスラッシュ]
+====
+
+.Triple plus and inline passthrough macro
+----
+include::{includedir}/ex-pass.adoc[tags=b-3p-macro]
+----
+
+[.result]
+====
+include::{includedir}/ex-pass.adoc[tags=b-3p-macro]
+====
+
+== 目次
+=== 目次を使う場合
+----
+include::{includedir}/ex-toc.adoc[tags=基本]
+----
+
+.右寄せ目次を使う場合
+----
+include::{includedir}/ex-toc.adoc[tags=ポジション]
+----
+
+TIP: 目次のlink: title, levels, and positioning [タイトル、レベル、位置]はカスタムできます。
