@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    // 定数や変数を定義する
+    environment {
+        docsDir = 'build/docs/asciidoc'
+    }
+
+    stages {
+        stage('事前準備') {
+            steps {
+                deleteDir()
+
+                // このJobをトリガーしてきたGithubのプロジェクトをチェックアウト
+                checkout scm
+
+                // ジョブ失敗の原因調査用にJenkinsfileとbuild.gradleは最初に保存する
+                archiveArtifacts "Jenkinsfile"
+                archiveArtifacts "build.gradle"
+
+                script {
+                    // Permission deniedで怒られないために実行権限を付与する
+                    if(isUnix()) {
+                        sh 'chmod +x gradlew'
+                    }
+                }
+                gradlew 'clean'
+            }
+        }
+
+        stage('ドキュメント生成') {
+            steps {
+                gradlew 'asciidoctor'
+                archiveArtifacts "${docsDir}/**"
+
+
+
+
+                // AsciiDocをJenkinsのビルド結果から見れるようにする
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "${docsDir}/html5",
+                    reportFiles: 'index.html',
+                    reportName: "AsciiDoc出力結果"
+                ])
+            }
+        }
+
+        stage('デプロイ') {
+            steps {
+                sh "cp -r ${docsDir}/html5 ~/web_server_static_resources/asciidoctor-sample"
+            }
+        }
+    }
+}
+
+
+// Gradlewコマンドを実行する
+def gradlew(command) {
+    if(isUnix()) {
+        sh "./gradlew ${command} --stacktrace"
+    } else {
+        bat "./gradlew.bat ${command} --stacktrace"
+    }
+}

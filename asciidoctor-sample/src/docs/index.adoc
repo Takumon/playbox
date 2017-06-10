@@ -1,0 +1,71 @@
+= AsciidoctorTemplate
+// DocTypeを指定
+:page-layout: docs
+// ドキュメントの説明。
+:description: Javaさえ動く環境であればAsciidoctorすぐに始められる雛形プロジェクトです。
+// 検索キーワード
+:keywords: AsciiDoc, Asciidoctor, Gradle
+// 言語に日本語を指定する。
+:lang: ja
+// font awsomeを使用する。
+:icons: font
+// 目次を表示する。左側に表示する。
+:toc: left
+// 目次を第何レベルまで表示するか。
+:toclevels: 2
+// タイトルにリンクをつける。(属性を定義するだけでリンクが付く)
+:linkattrs:
+// 章番号を付けるか。(属性を定義するだけで章番号が付く)
+:sectnums:
+// ソースコードをハイライトする。
+:source-highlighter: coderay
+// UIマクロを有効にする
+:experimental:
+// 変数定義。各資産のルートフォルダ
+// 画像
+:imagesdir: images
+// インクルード用adocファイル
+:includedir: _includes
+// ソース(Javaソースなど)
+:sourcedir: sources
+// 各ラベルの日本語定義
+:toc-title: 目次
+:preface-title: はじめに
+:appendix-caption: 付録
+:caution-caption: 注意
+:example-caption: 例
+:figure-caption: 図
+:important-caption: 重要
+:last-update-label: 最終更新
+:manname-title: 名前
+:note-caption: 注記
+:preface-title: まえがき
+:table-caption: 表
+:tip-caption: ヒント
+:toc-title: 目次
+:untitled-label: 無題
+:version-label: バージョン
+:warning-caption: 警告
+:listing-caption: リスト
+// デフォルトの章番号の接頭辞「Chapter.」が表示されないよう、値を空で設定する。
+:sectanchors:
+
+
+// 独自CSSとJSの読み込み
+++++
+<link rel="stylesheet" href="css/index.css"></link>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+++++
+
+{description}
+
+
+toc::[]
+
+
+== こんにちは
+初めの一歩です。
