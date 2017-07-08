@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -27,11 +28,35 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
+  add(name: String): void {
+    name = name.trim();
+
+    if (!name) {
+      return;
+    }
+
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
+
+  delete(hero: Hero):void {
+    this.heroService.delete(hero)
+        .then(() => {
+          this.heroes = this.heroes.filter(h => h !== hero);
+          if(this.selectedHero === hero) {
+            this.selectedHero = null;
+          }
+        });
+  }
+
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
 
-  goToDetail():void {
+  gotoDetail():void {
     this.router.navigate(['./detail', this.selectedHero.id]);
   }
 }
