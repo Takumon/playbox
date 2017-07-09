@@ -1,0 +1,276 @@
+<md-toolbar color="primary">
+  <button type="button" md-button (click)="sidenav.toggle()"><md-icon>menu</md-icon></button>
+
+  <span>MyCompany</span>
+  <span class="example-spacer"></span>
+  <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon></button>
+</md-toolbar>
+
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item> Setting </button>
+  <button md-menu-item> Help </button>
+</md-menu>
+
+
+<md-sidenav-container>
+  <md-sidenav  mode="over" #sidenav class="example-sidenav">
+    Jolly good!
+  </md-sidenav>
+
+
+  <md-tab-group md-selected="selectedIndex">
+    
+    <md-tab label="Modal">
+      <div class="example-button-row">
+        <h3>ダイアログ</h3>
+        <button md-button (click)="openDialog()">Launch dialog</button>
+        You chose: {{selectedOption}}
+      </div>
+
+      <div class="example-button-row">
+        <h3>ツールチップ</h3>
+        <span mdTooltip="ツールチップだよ〜">マウスをホバーしてみて</span>
+      </div>
+
+      <div class="example-button-row">
+        <h3>ページング</h3>
+        <md-paginator [length]="100"
+                      [pageSize]="10"
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+        </md-paginator>
+      </div>
+      
+
+    </md-tab>
+
+    <md-tab label="Button">   
+      <div class="example-button-row">
+        <h3>通常のボタン</h3>
+        
+        <button md-fab><md-icon>check</md-icon></button>
+        <button md-mini-fab><md-icon>stars</md-icon></button>
+      </div>
+
+      <div class="example-button-row">
+        <h3>リンクボタン</h3>
+        <a md-button routerLink=".">フラット</a>
+        <a md-raised-button routerLink=".">浮き上がり</a>
+        <a md-fab routerLink="."><md-icon>favorite</md-icon></a>
+        <a md-mini-fab routerLink="."><md-icon>restore</md-icon></a>
+      </div>
+
+      <div class="example-button-row">
+        <h3>トグルボタン</h3>
+        <md-button-toggle>Toggle me!</md-button-toggle>
+
+        <h3>トグルボタングループ</h3>
+        <md-button-toggle-group #group="mdButtonToggleGroup">
+          <md-button-toggle value="left" >
+            <md-icon>format_align_left</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="center" >
+            <md-icon>format_align_center</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="right" >
+            <md-icon>format_align_right</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="justify" disabled>
+            <md-icon>format_align_justify</md-icon>
+          </md-button-toggle>
+        </md-button-toggle-group>
+        <div class="example-selected-value">選択値：　{{group.value}}</div>
+
+      </div>
+
+      <div class="example-button-row">
+        <h3>チップ</h3>
+        <md-chip-list>
+          <md-chip>魚１匹</md-chip>
+          <md-chip>魚２匹</md-chip>
+          <md-chip color="primary" selected="true">プライマリ魚</md-chip>
+          <md-chip color="accent" selected="true">アクセント魚</md-chip>
+          <md-chip color="warn" selected="true">ワーン魚</md-chip>
+        </md-chip-list>
+      </div>
+
+      <div class="example-button-row">
+        <h3> クルクル</h3>
+        <md-spinner></md-spinner>
+      </div>
+
+      <div class="example-button-row">
+        <h3>シュインシュイン</h3>
+        <md-progress-bar mode="indeterminate"></md-progress-bar>
+      </div>
+
+
+    </md-tab>
+
+
+    <md-tab label="Form">  
+      <form class="example-form">
+        <md-input-container class="example-full-width">
+          <input [mdDatepicker]="picker" mdInput placeholder="予約日">
+          <button mdSuffix [mdDatepickerToggle]="picker"></button>
+        </md-input-container>
+        <md-datepicker #picker></md-datepicker>
+        
+        <md-input-container class="example-full-width">
+          <input type="datetime-local" mdInput placeholder="予約日時" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="month" mdInput placeholder="予約月" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="week" mdInput placeholder="予約週">
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="time" mdInput placeholder="予約時間" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="number" mdInput placeholder="予算金額" />
+        </md-input-container>
+        <md-input-container class="example-full-width" >
+          <input type="text" mdInput placeholder="State"
+                  [mdAutocomplete]="auto" 
+                  [formControl]="stateCtrl"
+                  />
+          <md-autocomplete #auto="mdAutocomplete">
+            <md-option *ngFor="let state of filteredStates | async" [value]="state">
+              {{ state }}
+            </md-option>
+          </md-autocomplete>
+        </md-input-container>
+        
+        <section class="example-full-width">
+          <md-checkbox class="example-margin">チェック1</md-checkbox>
+          <md-checkbox class="example-margin">チェック2</md-checkbox>
+          <md-checkbox class="example-margin">チェック3</md-checkbox>
+        </section>
+
+        <section class="example-full-width">
+          <label>ラジオボタンサンプル</label>
+          <md-radio-group>
+            <md-radio-button value="radio1">ラジオ1</md-radio-button>
+            <md-radio-button value="radio2">ラジオ2</md-radio-button>
+            <md-radio-button value="radio3">ラジオ3</md-radio-button>
+          </md-radio-group>
+        </section>
+
+        <section class="example-full-width">
+          <md-select placeholder="好きな食べ物" [(ngModel)]="selectedValue" name="food">
+            <md-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </md-option>
+          </md-select>
+          <p>選択した値：　{{selectedValue}}</p>
+        </section>
+
+        <section class="example-full-width">
+          <md-slider
+            class="my-slider"
+            step=5
+            min=0
+            max=100
+            tick-interval=1
+            thumb-label=true
+            [(ngModel)]="sliderValue"
+            name="slider"
+            ></md-slider>
+            <p>スライダーの値：　{{sliderValue}}</p>
+        </section>
+
+        <section class="example-full-width">
+          <md-slide-toggle>XXを有効にする</md-slide-toggle>
+        </section>
+
+
+        <md-input-container class="example-full-width">
+          <input type="password" mdInput placeholder="パスワード" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="tel" mdInput placeholder="電話番号" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="url" mdInput placeholder="お客様ホームページ" />
+        </md-input-container>
+        <md-input-container class="example-full-width">
+          <input type="email" mdInput placeholder="メールアドレス" />
+        </md-input-container>
+      </form>
+
+      <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let state of filteredStates | async" [value]="state">
+          {{ state }}
+        </md-option>
+      </md-autocomplete>
+    </md-tab>
+
+
+    <md-tab label="List">  
+      <md-list>
+        <h3 md-subheader>フォルダ</h3>
+        <md-list-item *ngFor="let folder of folders">
+          <md-icon md-list-icon>folder</md-icon>
+          <h4 md-line>{{folder.name}}</h4>
+          <p md-line>{{folder.updated | date}} </p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item *ngFor="let note of notes">
+          <md-icon md-list-icon>note</md-icon>
+          <h4 md-line>{{note.name}}</h4>
+          <p md-line>{{note.updated | date}}</p>
+        </md-list-item>
+      </md-list>
+    </md-tab>
+
+
+    <md-tab label="Card">  
+      <div class="my-content">
+        <md-card class="example-card" *ngFor="let data of myData">
+          <md-card-header>
+            <img class="card-avatar" md-card-avatar [src]="data.userIcon" alt="">
+            <md-card-title>{{ data.title }}</md-card-title>
+            <md-card-subtitle>by {{ data.userName }}</md-card-subtitle>
+          </md-card-header>
+
+          <img class="card-image" md-card-iamge [src]="data.image">
+
+          <md-card-content>
+            <p>{{data.description}}</p>
+          </md-card-content>
+
+          <md-card-actions>
+            <button md-button>LIKE</button>
+            <button md-button>SHARE</button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </md-tab>
+
+
+    <md-tab label="Card">   
+      <md-grid-list cols="4" rowHeigth="100px">
+        <md-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color">
+          {{tile.text}}
+        </md-grid-tile>
+      </md-grid-list>
+    </md-tab>
+
+
+
+    <md-tab label="Tab 2">   
+      <h1>Tab2</h1>
+    </md-tab>
+
+    <md-tab label="Tab 3">   
+      <h1>Tab3</h1>
+    </md-tab>
+
+  </md-tab-group>
+</md-sidenav-container>
+
