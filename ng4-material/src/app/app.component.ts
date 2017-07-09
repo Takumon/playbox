@@ -12,12 +12,72 @@ import 'rxjs/add/operator/map';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
-  myData: Array<any>;
+  IMAGE_BASE_URL = '../assets/img/examples';
+
+  myData = [
+    {
+      userIcon: `${this.IMAGE_BASE_URL}/icon_Yochan.png`,
+      title: 'ペットを紹介するよ！',
+      userName: 'Yochan',
+      image: `${this.IMAGE_BASE_URL}/Yochan.jpeg`,
+      description: `
+        ネコ（猫）は、狭義には食肉目ネコ科ネコ属に分類される
+        ヨーロッパヤマネコが家畜化されたイエネコ（家猫、Felis silvestris catus）に対する通称である。
+        人間によくなつくため、イヌ（犬）と並ぶ代表的なペットとして世界中で広く飼われている。
+      `
+    },
+    {
+      userIcon: `${this.IMAGE_BASE_URL}/icon_Tasan.png`,
+      title: 'ペットを紹介するよ！',
+      userName: 'Tasan',
+      image: `${this.IMAGE_BASE_URL}/Tasan.jpg`,
+      description: `
+            柴犬（しばいぬ）は、日本原産の日本犬の一種。
+            オスは体高38 - 41cm、メスは35 - 38cmの犬種。
+            日本の天然記念物に指定された7つの日本犬種（現存は6犬種）の1つで、
+            指定は1936年（昭和11年）12月16日。日本における飼育頭数は最も多い。
+      `
+    },
+    {
+      userIcon: `${this.IMAGE_BASE_URL}/icon_Yochan.png`,
+      userName: 'ChibiYochan',
+      title: 'ペットを紹介するよ！',
+      image: `${this.IMAGE_BASE_URL}/ChibiYochan.jpg`,
+      description: `
+        トラ（虎、Panthera tigris）は、食肉目ネコ科ヒョウ属に分類される食肉類。
+      `
+    }
+
+  ];
   stateCtrl: FormControl;
   filteredStates: any;
   selectedValue: string;
   sliderValue: number;
+  folders = [
+    {name: '写真', updated: new Date('2017/01/20')},
+    {name: '料理', updated: new Date('2016/10/2')},
+    {name: '仕事', updated: new Date('2016/11/22')},
+  ];
+
+  notes = [
+    {name: '夏休み', updated: new Date('2015/08/2')},
+    {name: 'キッチンリフォーム', updated: new Date('2016/10/2')},
+  ];
+
+
+  tiles = [
+    {text: 'その１', cols: 3, rows: 1,  color: 'lightblue'},
+    {text: 'その2', cols: 1, rows: 2,  color: 'lightgreen'},
+    {text: 'その3', cols: 1, rows: 1,  color: 'lightpink'},
+    {text: 'その4', cols: 2, rows: 1,  color: '#DDBDF1'},
+    {text: 'その5', cols: 2, rows: 2,  color: '#11BDF1'},
+    {text: 'その6', cols: 2, rows: 1,  color: '#DD11F1'},
+    {text: 'その7', cols: 2, rows: 1,  color: '#DFF1F1'},    
+
+  ];
 
   foods = [
     {value: 'steak', viewValue: 'ステーキ'},
@@ -82,9 +142,6 @@ export class AppComponent {
   constructor(private http: Http){
     this.stateCtrl = new FormControl();
 
-    this.http.get('https://jsonplaceholder.typicode.com/photos')
-         .toPromise()
-         .then(response => this.myData = response.json());
     this.filteredStates = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterStates(name));

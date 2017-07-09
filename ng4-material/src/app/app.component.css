@@ -37,3 +37,16 @@ md-sidenav {
 .my-slider {
     width: 400px;
 }
+
+.example-card {
+    width: 80%;
+    margin: 24px auto;
+}
+
+.card-avatar {
+  box-shadow: 0 0 4px black;
+}
+
+.card-image {
+    width: 100%;
+}

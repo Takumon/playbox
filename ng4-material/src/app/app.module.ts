@@ -18,7 +18,10 @@ import {
   MdNativeDateModule,
   MdSelectModule,
   MdSliderModule,
-  MdSlideToggleModule
+  MdSlideToggleModule,
+  MdListModule,
+  MdGridListModule,
+  MdTabsModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -45,6 +48,9 @@ import { AppComponent } from './app.component';
     MdSelectModule,
     MdSliderModule,
     MdSlideToggleModule,
+    MdListModule,
+    MdGridListModule,
+    MdTabsModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule
