@@ -50,3 +50,11 @@ md-sidenav {
 .card-image {
     width: 100%;
 }
+
+.example-button-row {
+  margin: 64px 24px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}

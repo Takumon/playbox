@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {MdDialog, MdDialogRef} from '@angular/material';
 
 import { Http } from '@angular/http';
 
@@ -15,6 +16,8 @@ import 'rxjs/add/operator/map';
 
 
 export class AppComponent {
+  selectedOption: string;
+
   IMAGE_BASE_URL = '../assets/img/examples';
 
   myData = [
@@ -139,7 +142,9 @@ export class AppComponent {
     'Wyoming',
   ];
 
-  constructor(private http: Http){
+  constructor(
+    private http: Http, 
+    public dialog: MdDialog){
     this.stateCtrl = new FormControl();
 
     this.filteredStates = this.stateCtrl.valueChanges
@@ -147,8 +152,24 @@ export class AppComponent {
         .map(name => this.filterStates(name));
   }
 
+  openDialog() {
+    let dialogRef = this.dialog.open(DialogResultExampleDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    });
+  }
+
+
   filterStates(val: string) {
     return val ? this.states.filter(s => s.toLowerCase().indexOf(val.toLowerCase()) === 0)
                : this.states;
   }
+}
+
+@Component({
+  selector: 'dialog-result-example-dialog',
+  templateUrl: 'dialog-result-example-dialog.html',
+})
+export class DialogResultExampleDialog {
+  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
 }

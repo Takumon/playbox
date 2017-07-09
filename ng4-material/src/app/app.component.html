@@ -18,7 +18,93 @@
   </md-sidenav>
 
 
-  <md-tab-group>
+  <md-tab-group md-selected="selectedIndex">
+    
+    <md-tab label="Modal">
+      <div class="example-button-row">
+        <h3>ダイアログ</h3>
+        <button md-button (click)="openDialog()">Launch dialog</button>
+        You chose: {{selectedOption}}
+      </div>
+
+      <div class="example-button-row">
+        <h3>ツールチップ</h3>
+        <span mdTooltip="ツールチップだよ〜">マウスをホバーしてみて</span>
+      </div>
+
+      <div class="example-button-row">
+        <h3>ページング</h3>
+        <md-paginator [length]="100"
+                      [pageSize]="10"
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+        </md-paginator>
+      </div>
+      
+
+    </md-tab>
+
+    <md-tab label="Button">   
+      <div class="example-button-row">
+        <h3>通常のボタン</h3>
+        
+        <button md-fab><md-icon>check</md-icon></button>
+        <button md-mini-fab><md-icon>stars</md-icon></button>
+      </div>
+
+      <div class="example-button-row">
+        <h3>リンクボタン</h3>
+        <a md-button routerLink=".">フラット</a>
+        <a md-raised-button routerLink=".">浮き上がり</a>
+        <a md-fab routerLink="."><md-icon>favorite</md-icon></a>
+        <a md-mini-fab routerLink="."><md-icon>restore</md-icon></a>
+      </div>
+
+      <div class="example-button-row">
+        <h3>トグルボタン</h3>
+        <md-button-toggle>Toggle me!</md-button-toggle>
+
+        <h3>トグルボタングループ</h3>
+        <md-button-toggle-group #group="mdButtonToggleGroup">
+          <md-button-toggle value="left" >
+            <md-icon>format_align_left</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="center" >
+            <md-icon>format_align_center</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="right" >
+            <md-icon>format_align_right</md-icon>
+          </md-button-toggle>
+          <md-button-toggle value="justify" disabled>
+            <md-icon>format_align_justify</md-icon>
+          </md-button-toggle>
+        </md-button-toggle-group>
+        <div class="example-selected-value">選択値：　{{group.value}}</div>
+
+      </div>
+
+      <div class="example-button-row">
+        <h3>チップ</h3>
+        <md-chip-list>
+          <md-chip>魚１匹</md-chip>
+          <md-chip>魚２匹</md-chip>
+          <md-chip color="primary" selected="true">プライマリ魚</md-chip>
+          <md-chip color="accent" selected="true">アクセント魚</md-chip>
+          <md-chip color="warn" selected="true">ワーン魚</md-chip>
+        </md-chip-list>
+      </div>
+
+      <div class="example-button-row">
+        <h3> クルクル</h3>
+        <md-spinner></md-spinner>
+      </div>
+
+      <div class="example-button-row">
+        <h3>シュインシュイン</h3>
+        <md-progress-bar mode="indeterminate"></md-progress-bar>
+      </div>
+
+
+    </md-tab>
 
 
     <md-tab label="Form">  
@@ -175,9 +261,7 @@
       </md-grid-list>
     </md-tab>
 
-    <md-tab label="Button">   
-      <h1>Tab1</h1>
-    </md-tab>
+
 
     <md-tab label="Tab 2">   
       <h1>Tab2</h1>

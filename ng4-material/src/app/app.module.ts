@@ -5,6 +5,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MdButtonModule,
+  MdButtonToggleModule,
+  MdChipsModule,
   MdCardModule,
   MdMenuModule,
   MdToolbarModule,
@@ -21,19 +23,32 @@ import {
   MdSlideToggleModule,
   MdListModule,
   MdGridListModule,
-  MdTabsModule
+  MdTabsModule,
+  MdProgressSpinnerModule,
+  MdProgressBarModule,
+  MdDialogModule,
+  MdTooltipModule,
+  MdSnackBarModule,
+  MdPaginatorModule,
 } from '@angular/material';
 
-import { AppComponent } from './app.component';
+import { AppComponent, DialogResultExampleDialog } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogResultExampleDialog,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MdButtonModule,
+    MdButtonToggleModule,
+    MdChipsModule,
     MdCardModule,
     MdMenuModule,
     MdToolbarModule,
@@ -51,11 +66,14 @@ import { AppComponent } from './app.component';
     MdListModule,
     MdGridListModule,
     MdTabsModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule
+    MdProgressSpinnerModule,
+    MdProgressBarModule,
+    MdDialogModule,
+    MdTooltipModule,
+    MdSnackBarModule,
+    MdPaginatorModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, DialogResultExampleDialog]
 })
 export class AppModule { }
