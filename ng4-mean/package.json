@@ -5,16 +5,19 @@
   "scripts": {
     "ng": "ng",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
+
+    "lint": "npm run lint:client && npm run lint:server",
+    "lint:client": "ng lint",
+    "lint:server": "tslint './server/**/*.ts' -c ./server/tslint.server.json",
 
     "start":  "concurrently  --kill-others \"npm run start:client\" \"npm run start:server\"",
     "start:client": "ng serve --aot=true --progress=false --proxy-config proxy.conf.json",
-    "start:server": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon ./dist/server/bin/www.js\" ",
+    "start:server": "tsc -p ./server/tsconfig.server.json && concurrently \"tsc -w -p ./server/tsconfig.server.json\" \"nodemon ./dist/server/bin/www.js\" ",
 
     "build": "npm run build:client && npm run build:server",
     "build:client": "ng build --output-path=./dist/client",
-    "build:server": "tsc -p ./server"
+    "build:server": "tsc -p ./server/tsconfig.server.json"
   },
   "private": true,
   "dependencies": {

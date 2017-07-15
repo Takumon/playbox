@@ -10,7 +10,6 @@ const apiRouter: Router = Router();
 // declare axios for making http requests
 const API: string = 'https://jsonplaceholder.typicode.com';
 
-
 /* GET api listing. */
 apiRouter.get('/', (req: Request, res: Response) => {
   res.send('api works!!!!');
