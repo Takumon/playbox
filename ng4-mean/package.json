@@ -10,7 +10,7 @@
 
     "start":  "concurrently  --kill-others \"npm run start:client\" \"npm run start:server\"",
     "start:client": "ng serve --aot=true --progress=false --proxy-config proxy.conf.json",
-    "start:server": "concurrently  \"nodemon ./dist/server/bin/www.js\" ",
+    "start:server": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon ./dist/server/bin/www.js\" ",
 
     "build": "npm run build:client && npm run build:server",
     "build:client": "ng build --output-path=./dist/client",

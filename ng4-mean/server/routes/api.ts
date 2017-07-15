@@ -13,7 +13,7 @@ const API: string = 'https://jsonplaceholder.typicode.com';
 
 /* GET api listing. */
 apiRouter.get('/', (req: Request, res: Response) => {
-  res.send('api works');
+  res.send('api works!!!!');
 });
 
 // Get all posts
