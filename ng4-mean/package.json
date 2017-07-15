@@ -4,8 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "test": "ng test",
     "e2e": "ng e2e",
+
+    "test": "npm run test:server && npm run test:server",
+    "test:client": "ng test",
+    "test:server": "",
 
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "ng lint",

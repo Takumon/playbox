@@ -7,7 +7,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  posts: any = [];
+  posts: any[] = [];
 
   constructor(private postSService: PostsService) { }
 
