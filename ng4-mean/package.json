@@ -4,13 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "ng build --output-path=dist/client && npm run _server:build",
-    "_server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"nodemon dist/server/bin/www.js\" ",
-    "_server:build": "tsc -p ./server"
+
+    "start":  "concurrently  --kill-others \"npm run start:client\" \"npm run start:server\"",
+    "start:client": "ng serve --aot=true --progress=false --proxy-config proxy.conf.json",
+    "start:server": "concurrently  \"nodemon ./dist/server/bin/www.js\" ",
+
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "ng build --output-path=./dist/client",
+    "build:server": "tsc -p ./server"
   },
   "private": true,
   "dependencies": {
