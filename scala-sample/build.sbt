@@ -8,5 +8,9 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "Hello",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies ++= Seq(
+      scalaTest % Test ,
+      "org.specs2" %% "specs2-core" % "3.9.5" % "test"
+    ),
+    scalacOptions in Test ++= Seq("-Yrangepos")
   )
