@@ -3,11 +3,16 @@ package example
 import Element.elem
 import org.stairwaybook.expr._
 import org.stairwaybook.simulation._
+import org.stairwaybook.currency._
 
 object Starter extends App {
-  start()
+  drawSpiral()
+  drawExpression()
+  simulate()
+  currency()
 
-  def start() = {
+
+  private def drawSpiral() = {
 
     val space = elem(" ")
     val corner = elem("+")
@@ -32,6 +37,9 @@ object Starter extends App {
     }
 
     println(spiral(50, 0))
+  }
+
+  private def drawExpression() = {
 
 
     val f = new ExprFormatter
@@ -49,6 +57,17 @@ object Starter extends App {
 
     for (e <- Array(e1, e2, e3)) show(e)
 
+  }
+
+  private def simulate() = {
+    object MySimulation extends CircuitSimulation {
+      override def InverterDelay: Int = 1
+
+      override def AndGateDelay: Int = 3
+
+      override def OrGateDeleay: Int = 5
+    }
+
     import MySimulation._
 
     val input1, input2, sum, carry = new Wire
@@ -61,14 +80,17 @@ object Starter extends App {
     run
   }
 
+  private def currency() = {
+    val yen = Japan.Yen from US.Dollar * 100
+    println(yen)
+    val euro = Europe.Euro from yen
+    println(euro)
+    val dollar = US.Dollar from euro
+    println(dollar)
 
-
-  object MySimulation extends CircuitSimulation {
-    override def InverterDelay: Int = 1
-
-    override def AndGateDelay: Int = 3
-
-    override def OrGateDeleay: Int = 5
+    val dollar2 = US.Dollar * 100 + dollar
+    println(dollar2)
   }
+
 }
 
