@@ -9,6 +9,7 @@ lazy val root = (project in file(".")).
     )),
     name := "Hello",
     libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-xml" % "1.1.0",
       scalaTest % Test ,
       "org.specs2" %% "specs2-core" % "3.9.5" % "test"
     ),

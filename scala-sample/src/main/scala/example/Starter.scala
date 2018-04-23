@@ -4,12 +4,19 @@ import Element.elem
 import org.stairwaybook.expr._
 import org.stairwaybook.simulation._
 import org.stairwaybook.currency._
+import scala.xml.Elem
 
-object Starter extends App {
-  drawSpiral()
-  drawExpression()
-  simulate()
-  currency()
+
+
+object Starter {
+
+
+//  drawSpiral()
+//  drawExpression()
+//  simulate()
+//  currency()
+//  swing()
+  hoge()
 
 
   private def drawSpiral() = {
@@ -92,5 +99,97 @@ object Starter extends App {
     println(dollar2)
   }
 
+  private def swing() = {
+    import java.awt.event.ActionEvent
+    import java.awt.event.ActionListener
+    import javax.swing.JButton
+
+    implicit def function2ActionListener(f: ActionEvent => Unit) =
+      new ActionListener {
+        override def actionPerformed(event: ActionEvent): Unit = f(event)
+      }
+
+
+    val button = new JButton()
+    button.addActionListener(
+        (_: ActionEvent) => println("pressed!")
+    )
+  }
+
+  private def hoge() = {
+    import scala.collection.mutable
+
+    val p1, p2 = new Point(1,2)
+    val q = new Point(2,3)
+
+    println(p1.hashCode())
+    println(p2.hashCode())
+
+
+  }
+
+
+
+
+
+  def queens(n: Int): List[List[(Int, Int)]] = {
+    def placeQueens(k: Int): List[List[(Int, Int)]] =
+      if (k == 0)
+        List(List())
+      else
+        for {
+          queens <- placeQueens(k -1)
+          column <- 1 to n
+          queen = (k, column)
+          if isSafe(queen, queens)
+        } yield queen :: queens
+
+    def isSafe(queen: (Int, Int), queens: List[(Int, Int)]): Boolean =
+      queens forall (q => !inCheck(queen, q))
+
+    def inCheck(q1: (Int, Int), q2: (Int, Int)) =
+      q1._1 == q2._1 || // 同じ段
+        q1._2 == q2._2 || // 同じ行
+        (q1._1 - q2._1).abs == (q1._2 - q2._2).abs // 対角線上
+
+
+    placeQueens(n)
+  }
+
 }
 
+class Point(val x: Int, val y: Int) {
+  override def equals(other: Any): Boolean = other match {
+    case that: Point => this.x == that.x && this.y == that.y
+    case _ => false
+  }
+
+  override def hashCode(): Int = (x, y).##
+}
+
+
+object Color extends Enumeration {
+  val Red, Orange, Yello = Value
+}
+
+
+class ColorPoint(x: Int, y: Int, val color: Color.Value) extends Point(x, y) {
+  override def equals(other: Any): Boolean = other match {
+    case that: ColorPoint =>
+        this.color == that.color && super.equals(that)
+    case that: Point =>
+        that equals this
+    case _ => false
+  }
+}
+
+
+import java.io._
+
+class Reader(fname: String) {
+  private val in =
+    new BufferedReader(new FileReader(fname))
+
+  @throws(classOf[IOException])
+  def read() = in.read()
+}
