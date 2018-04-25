@@ -51,7 +51,7 @@ object MyModule {
   def compose[A, B, C](f: B => C, g: A => B): A => C =
     (a: A) => f(g(a))
 
-  def main(args: Array[String]): Unit = {
+  def exec(args: Array[String]): Unit = {
     println(formatResult("absolute value", -42, abs))
     println(formatResult("factorial", 7, factorial))
 
