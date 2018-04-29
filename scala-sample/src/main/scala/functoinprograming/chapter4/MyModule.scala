@@ -1,15 +1,13 @@
 package functoinprograming.chapter4
 
-import functoinprograming.chapter4.Either
 
 
 object MyModule {
-  def exec(args: Array[String]): Unit = {
+  def maim(args: Array[String]): Unit = {
     forPerson()
   }
 
   def forPerson(): Unit = {
-    import functoinprograming.chapter4.Person
 
     val p1 = Person.mkPerson("Bob", 12)
     val p2 = Person.mkPerson(null, 12)
