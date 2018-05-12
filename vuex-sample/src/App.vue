@@ -8,33 +8,31 @@
     </ul>
     <div>
       <input type="text" v-model="inputTitle">
-      <button @click="addItem">Add</button>
+      <button @click="ADD_TASK(inputTitle)">Add</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+import * as types from './store/mutation-types'
 import Item from './Item.vue'
+
 export default {
   name: 'app',
   components: { Item },
   data () {
     return {
       inputTitle: "",
-      items: [
-        {is_do: false, title: 'Task1'},
-        {is_do: true, title: 'Task2'},
-        {is_do: false, title: 'Task3'},
-      ]
     }
   },
+  computed: {
+    ...mapState(['items'])
+  },
   methods: {
-    addItem() {
-      this.items.push({
-        title: this.inputTitle,
-        is_do: false
-      })
-    }
+    ...mapActions([
+      types.ADD_TASK
+    ])
   }
 }
 </script>
