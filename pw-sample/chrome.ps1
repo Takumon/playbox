@@ -1,5 +1,10 @@
+# ショートカットで起動する場合は下記のようにする
+# C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy RemoteSigned -File  C:\Users\XXXX\chrome.ps1
+
+# WebDriver.dllとWebDriver.Support.dllとchromedriver.exeが必要
+# WebDriver.Support.dllはC:直下に配置
 Add-Type -Path "C:\selenium\driver\lib\net40\WebDriver.dll"
-$driver = New-Object "OpenQA.Selenium.Chrome.ChromeDriver"
+$driver = New-Object OpenQA.Selenium.Chrome.ChromeDriver("C:\selenium")
 
 $CWD = Split-Path $MyInvocation.MyCommand.Path -parent
 $filename = "$CWD\config.xml"
