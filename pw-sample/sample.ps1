@@ -253,7 +253,79 @@ try {
 echo $CONSTANT_VALUES
 
 
+$result = @(1..5) |
+    %{ $_ * $_} |  # 変換
+    ?{$_ % 2 -eq 1} | # フィルタ
+    sort -Descending | # ソート
+    %{ "<<$_>>"}
 
 
+$result | %{echo $_}
+
+@(4,2,4,566,45,3,656,43,4) | sort -Unique -Descending
+
+
+@("one", "two", "three", "four", "five") | sort -Property {$_.Length, $_}
+
+
+@(1..3) | Get-Member
+
+
+## 自作関数
+function My-Function([Parameter(ValueFromPipeline=$true)] $param) {
+  process {
+    return $param * $param + 100;
+  }
+}
+
+1..3 | My-Function
+
+
+$content = (cat workspace\git\playbox\pw-sample\sample.txt)
+$content | %{$_ + $_}
+
+
+$csv = (Import-Csv workspace\git\playbox\pw-sample\sample.csv)
+$csv | ? {$_.AGE -as [int] -gt 18}
+
+
+$csvArray = @(
+    @{ID=1; NAME="Sato"; AGE=18},
+    @{ID=2; NAME="Suzuki"; AGE=22},
+    @{ID=3; NAME="Tanaka"; AGE=19}
+)
+
+
+$csvArray | % {New-Object PSObject -Property $_} | Export-Csv out.csv
+
+# XML
+$outputXml = New-Object System.Xml.XmlDocument
+
+$xmlHoge = $outputXml.CreateElement('hoge')
+$xmlFuga = $outputXml.CreateElement('fuga')
+$xmlFuga.SetAttribute('message', 'Hello XML Attribute!!!')
+$xmlFuga.InnerText = 'inner text'
+
+
+$xmlHoge.AppendChild($xmlFuga)
+$outputXml.AppendChild($xmlHoge)
+$outputXml.Save('out.xml')
+
+
+# 日付
+$date = Get-Date
+
+echo $date.ToString("yyyy/MM/dd")
+echo $date.AddDays(30).ToString('yyyy年MM月dd日')
+
+# 別スクリプトを実行する
+
+.\workspace\git\playbox\pw-sample\other.ps1
+
+echo "one script"
+
+echo ('$other=' + $other)
+
+Other-Function
 
 
