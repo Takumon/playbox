@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <data>
+    <name>slackUrl</name>
+    <value>https://XXXXXXX/messages/XXXXX/</value>
+  </data>
+  <data>
+    <name>slackEmail</name>
+    <value>XXXXXXXXXXXX@gmail.com</value>
+  </data>
+  <data>
+    <name>slackPassword</name>
+    <value>XXXXXXXXXXXX</value>
+  </data>
+</config>
