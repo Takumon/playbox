@@ -31,7 +31,10 @@ export class Backend {
     }
 
     const params = new HttpParams().set('id', id.toString());
-    return this.http.get(`${this.url}/talk/`, { params }).pipe(map( (res: any) => this._talks[id] = res.talk));
+    return this.http.get(`${this.url}/talk/`, { params }).pipe(map( (res: any) => {
+      this._talks[id] = res.talk;
+      return res.talk;
+    }));
   }
 
   rateTalk(id: number, rating: number): void {
