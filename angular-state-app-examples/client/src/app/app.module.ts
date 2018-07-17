@@ -28,6 +28,8 @@ import { FiltersComponent } from './filters/filters.component';
 import { RouterModule } from '@angular/router';
 import { Backend } from './backend';
 import { WatchService } from './watch';
+import { Store } from './store';
+import { reducer, initState } from './model';
 
 
 
@@ -69,7 +71,12 @@ import { WatchService } from './watch';
   ],
   providers: [
     Backend,
-    WatchService
+    WatchService,
+    {
+      provide: Store,
+      useFactory: (backend, watch) => new Store(reducer(backend, watch), initState),
+      deps: [Backend, WatchService ]
+    }
   ],
   bootstrap: [AppComponent]
 })

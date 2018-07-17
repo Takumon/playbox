@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Backend } from '../backend';
-import { Filters } from '../model';
+import { Filters, State, Action, Talk } from '../model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Store } from '../store';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class TalksAndFiltersComponent {
   constructor(
     public backend: Backend,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<State, Action>
   ) {
     route.params.subscribe(p => {
       const filters = {
@@ -23,13 +25,27 @@ export class TalksAndFiltersComponent {
         minRating: p.minRating ? p.minRating : 0
       };
 
-      this.backend.changeFilters(filters);
+      this.store.sendAction({
+        type: 'FILTER',
+        filters
+      });
     });
+  }
 
+  get filters(): Filters {
+    return this.store.state.filters;
+  }
+
+  get talks(): Talk[] {
+    return this.store.state.list.map(n => this.store.state.talks[n]);
   }
 
   handleFiltersChange(filters: Filters): void {
-    this.backend.changeFilters(filters);
+    this.store.sendAction({
+      type: 'FILTER',
+      filters
+    });
+
     this.router.navigate(['/talks', this.createParams(filters)]);
   }
 

@@ -6,6 +6,7 @@
             "attribute",
             "app",
             "camelCase"
-        ]
+        ],
+        "interface-over-type-literal": false
     }
 }
