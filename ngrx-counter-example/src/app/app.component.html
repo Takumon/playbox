@@ -1,11 +1,9 @@
-<div id="layout">
-  <div class="sidebar">
-    <div class="sidebar__header">
-      <h1 class="brand-title">NgRx State</h1>
-      <h2 class="brand-tagline">Example #1 - Basic Counter</h2>
-    </div>
-  </div>
-  <div class="content">
-    <app-counter></app-counter>
-  </div>
-</div>
+<header>
+  <mat-toolbar color="primary">
+    <h1>{{title}}</h1>
+  </mat-toolbar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer></footer>

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import * as CounterReducer from '../_state/counter.reducer';
-import * as CounterAction from '../_state/counter.action';
+import * as CounterReducer from '../todo/_state/counter.reducer';
+import * as CounterAction from '../todo/_state/counter.action';
 
 @Component({
   selector: 'app-counter',
