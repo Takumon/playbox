@@ -10,16 +10,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { CounterComponent } from './counter/counter.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { TodoStateModule } from './todo/_state/_state.module';
 import { CoreModule } from './core/core.module';
+import { CounterStateModule } from './counter/_state/_state.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     CoreModule,
     TodoStateModule,
+    CounterStateModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule
   ],
